@@ -1,0 +1,1971 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>УльтраМол — Измельчительное оборудование для пищевых ингредиентов</title>
+<meta name="description" content="Российские мельничные комплексы с сертификацией ХАССП. Замена импортных линий. Изготовление под ключ от 2 месяцев.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════
+   DESIGN SYSTEM — NVIDIA × SpaceX × UltraMol
+   Industrial cinematic. Black canvas. Orange signal.
+   ═══════════════════════════════════════ */
+:root {
+  --black: #000000;
+  --black-rich: #0a0a0a;
+  --black-card: #111111;
+  --black-surface: #161616;
+  --black-elevated: #1a1a1a;
+  --gray-900: #1e1e1e;
+  --gray-800: #2a2a2a;
+  --gray-700: #3a3a3a;
+  --gray-600: #555555;
+  --gray-500: #757575;
+  --gray-400: #999999;
+  --gray-300: #b0b0b0;
+  --gray-200: #d0d0d0;
+  --gray-100: #e8e8e8;
+  --white: #f0f0f0;
+  --white-pure: #ffffff;
+
+  /* Brand */
+  --orange: #EF7F1A;
+  --orange-bright: #FF9A3C;
+  --orange-glow: rgba(239, 127, 26, 0.12);
+  --orange-surface: rgba(239, 127, 26, 0.06);
+  --orange-border: rgba(239, 127, 26, 0.25);
+
+  /* Functional */
+  --green: #4ade80;
+  --red: #ef4444;
+  --blue: #3b82f6;
+
+  /* Type */
+  --font: 'Inter', -apple-system, sans-serif;
+  --mono: 'JetBrains Mono', monospace;
+
+  /* Motion */
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out: cubic-bezier(0, 0, 0.2, 1);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font);
+  background: var(--black);
+  color: var(--white);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+@media (min-width: 768px) {
+  .container { padding: 0 48px; }
+}
+
+@media (min-width: 1200px) {
+  .container { padding: 0 64px; }
+}
+
+/* ═══════════════════════════════════════
+   TYPOGRAPHY
+   ═══════════════════════════════════════ */
+.label {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--orange);
+}
+
+.display {
+  font-size: clamp(40px, 7vw, 80px);
+  font-weight: 800;
+  line-height: 1.0;
+  letter-spacing: -0.03em;
+  color: var(--white-pure);
+}
+
+.heading {
+  font-size: clamp(28px, 4vw, 48px);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--white-pure);
+}
+
+.subheading {
+  font-size: clamp(18px, 2vw, 22px);
+  font-weight: 400;
+  line-height: 1.65;
+  color: var(--gray-400);
+}
+
+.body {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.7;
+  color: var(--gray-300);
+}
+
+.em-orange {
+  color: var(--orange);
+  font-style: normal;
+}
+
+/* ═══════════════════════════════════════
+   NAVIGATION
+   ═══════════════════════════════════════ */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding: 20px 0;
+  transition: all 0.5s var(--ease);
+}
+
+.nav.scrolled {
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+.nav-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-logo {
+  font-family: var(--mono);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--white-pure);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.nav-logo em {
+  color: var(--orange);
+  font-style: normal;
+}
+
+.nav-links {
+  display: none;
+  gap: 32px;
+  list-style: none;
+}
+
+@media (min-width: 900px) {
+  .nav-links { display: flex; }
+}
+
+.nav-links a {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gray-400);
+  transition: color 0.3s;
+}
+
+.nav-links a:hover { color: var(--white-pure); }
+
+.nav-cta {
+  padding: 10px 28px;
+  background: transparent;
+  border: 2px solid var(--orange);
+  color: var(--orange);
+  font-family: var(--font);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: all 0.3s var(--ease);
+}
+
+.nav-cta:hover {
+  background: var(--orange);
+  color: var(--black);
+}
+
+/* ═══════════════════════════════════════
+   HERO — CINEMATIC FULLSCREEN
+   ═══════════════════════════════════════ */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-end;
+  padding: 0 0 80px;
+  overflow: hidden;
+
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    url('hero.png') center/cover no-repeat;
+  filter: brightness(0.35) contrast(1.1);
+}
+
+.hero-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0,0,0,0.95) 0%,
+    rgba(0,0,0,0.4) 40%,
+    rgba(0,0,0,0.2) 100%
+  );
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 20px;
+  border: 1px solid var(--orange-border);
+  border-radius: 2px;
+  margin-bottom: 32px;
+  animation: fadeUp 1s var(--ease) 0.2s both;
+}
+
+.hero-badge .dot {
+  width: 6px;
+  height: 6px;
+  background: var(--orange);
+  border-radius: 50%;
+  animation: pulse 2.5s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
+}
+
+.hero-badge span {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--orange);
+}
+
+.hero h1 {
+  font-size: clamp(36px, 6.5vw, 76px);
+  font-weight: 800;
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+  color: var(--white-pure);
+  margin-bottom: 28px;
+  max-width: 900px;
+  animation: fadeUp 1s var(--ease) 0.4s both;
+}
+
+.hero h1 em {
+  color: var(--orange);
+  font-style: normal;
+}
+
+.hero-sub {
+  font-size: clamp(15px, 1.8vw, 19px);
+  color: var(--gray-300);
+  max-width: 600px;
+  line-height: 1.75;
+  margin-bottom: 48px;
+  animation: fadeUp 1s var(--ease) 0.6s both;
+}
+
+.hero-sub strong {
+  color: var(--white-pure);
+  font-weight: 600;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 80px;
+  animation: fadeUp 1s var(--ease) 0.8s both;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 18px 40px;
+  background: var(--orange);
+  color: var(--black);
+  border: none;
+  border-radius: 2px;
+  font-family: var(--font);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.4s var(--ease);
+  text-decoration: none;
+}
+
+.btn-primary:hover {
+  background: var(--orange-bright);
+  transform: translateY(-2px);
+  box-shadow: 0 20px 60px rgba(239,127,26,0.25);
+}
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 18px 40px;
+  background: rgba(240,240,240,0.06);
+  color: var(--white);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 2px;
+  font-family: var(--font);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.4s var(--ease);
+  text-decoration: none;
+}
+
+.btn-ghost:hover {
+  background: rgba(255,255,255,0.1);
+  border-color: rgba(255,255,255,0.3);
+}
+
+/* Hero stats strip */
+.hero-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 2px;
+  animation: fadeUp 1s var(--ease) 1s both;
+}
+
+.hero-stat {
+  padding: 28px 24px;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(12px);
+}
+
+.hero-stat-num {
+  font-family: var(--mono);
+  font-size: clamp(24px, 3vw, 36px);
+  font-weight: 700;
+  color: var(--orange);
+  line-height: 1;
+  margin-bottom: 6px;
+}
+
+.hero-stat-label {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--gray-400);
+  letter-spacing: 0.05em;
+}
+
+@media (max-width: 767px) {
+  .hero-stats { grid-template-columns: repeat(2, 1fr); }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ═══════════════════════════════════════
+   SECTION COMMONS
+   ═══════════════════════════════════════ */
+section {
+  position: relative;
+  padding: 120px 0;
+
+}
+
+@media (min-width: 768px) {
+  section { padding: 160px 0; }
+}
+
+.section-header {
+  margin-bottom: 80px;
+}
+
+.section-header .label {
+  margin-bottom: 16px;
+}
+
+.section-header .heading {
+  margin-bottom: 20px;
+}
+
+.section-header .subheading {
+  max-width: 640px;
+}
+
+.section-divider {
+  width: 48px;
+  height: 2px;
+  background: var(--orange);
+  margin: 20px 0;
+}
+
+/* ═══════════════════════════════════════
+   PROBLEMS SECTION — DARK CARDS
+   ═══════════════════════════════════════ */
+.problems {
+  background: var(--black-rich);
+  border-top: 1px solid rgba(255,255,255,0.04);
+}
+
+.problems-grid {
+  display: grid;
+  gap: 1px;
+  background: rgba(255,255,255,0.06);
+  border-radius: 2px;
+}
+
+@media (min-width: 768px) {
+  .problems-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+.problem-card {
+  padding: 48px 36px;
+  background: var(--black-card);
+  transition: background 0.4s;
+  display: flex;
+  flex-direction: column;
+}
+
+.problem-card:hover {
+  background: var(--black-surface);
+}
+
+.problem-num {
+  font-family: var(--mono);
+  font-size: 64px;
+  font-weight: 700;
+  line-height: 1;
+  color: rgba(255,255,255,0.04);
+  margin-bottom: 24px;
+  letter-spacing: -0.03em;
+}
+
+.problem-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--white-pure);
+  margin-bottom: 12px;
+  line-height: 1.3;
+}
+
+.problem-desc {
+  font-size: 14px;
+  color: var(--gray-400);
+  line-height: 1.7;
+  flex: 1;
+}
+
+.problem-cost {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 24px;
+  padding: 8px 16px;
+  background: rgba(239,68,68,0.08);
+  border-left: 2px solid var(--red);
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--red);
+  letter-spacing: 0.03em;
+}
+
+/* ═══════════════════════════════════════
+   PRODUCT / SOLUTION — CINEMATIC IMAGE + SPECS
+   ═══════════════════════════════════════ */
+.product {
+  background: var(--black);
+}
+
+.product-hero-img {
+  position: relative;
+  width: 100%;
+  height: 50vh;
+  min-height: 400px;
+  margin-bottom: 80px;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.product-hero-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.7) contrast(1.05);
+}
+
+.product-hero-img .overlay-label {
+  position: absolute;
+  bottom: 32px;
+  left: 32px;
+  z-index: 2;
+}
+
+.product-hero-img .overlay-label span {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--orange);
+  background: rgba(0,0,0,0.7);
+  backdrop-filter: blur(12px);
+  padding: 8px 16px;
+  border: 1px solid var(--orange-border);
+  border-radius: 2px;
+}
+
+.product-intro {
+  display: grid;
+  gap: 64px;
+  margin-bottom: 80px;
+}
+
+@media (min-width: 900px) {
+  .product-intro { grid-template-columns: 1fr 1fr; }
+}
+
+.product-intro .heading em {
+  color: var(--orange);
+  font-style: normal;
+}
+
+.specs-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 2px;
+}
+
+@media (min-width: 768px) {
+  .specs-grid { grid-template-columns: repeat(4, 1fr); }
+}
+
+.spec-card {
+  padding: 32px 24px;
+  background: var(--black-card);
+  text-align: center;
+  transition: background 0.4s;
+}
+
+.spec-card:hover { background: var(--black-surface); }
+
+.spec-value {
+  font-family: var(--mono);
+  font-size: clamp(20px, 2.5vw, 28px);
+  font-weight: 700;
+  color: var(--orange);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.spec-name {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--gray-400);
+  letter-spacing: 0.05em;
+}
+
+/* Features list */
+.features-grid {
+  display: grid;
+  gap: 32px;
+  margin-top: 80px;
+}
+
+@media (min-width: 768px) {
+  .features-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (min-width: 1100px) {
+  .features-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+.feature-item {
+  padding: 32px;
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 2px;
+  transition: all 0.4s var(--ease);
+}
+
+.feature-item:hover {
+  border-color: var(--orange-border);
+  background: var(--orange-surface);
+}
+
+.feature-item .icon {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--orange);
+  border-radius: 2px;
+  margin-bottom: 20px;
+  font-size: 18px;
+}
+
+.feature-item h4 {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--white-pure);
+  margin-bottom: 8px;
+}
+
+.feature-item p {
+  font-size: 13px;
+  color: var(--gray-400);
+  line-height: 1.7;
+}
+
+/* ═══════════════════════════════════════
+   ECONOMICS — IMPACT NUMBERS
+   ═══════════════════════════════════════ */
+.economics {
+  background: var(--black-rich);
+  border-top: 1px solid rgba(255,255,255,0.04);
+}
+
+.econ-cards {
+  display: grid;
+  gap: 24px;
+}
+
+@media (min-width: 768px) {
+  .econ-cards { grid-template-columns: repeat(3, 1fr); }
+}
+
+.econ-card {
+  position: relative;
+  padding: 48px 36px;
+  background: var(--black-card);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 2px;
+  overflow: hidden;
+  transition: all 0.4s var(--ease);
+}
+
+.econ-card:hover {
+  border-color: var(--orange-border);
+}
+
+.econ-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--orange);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.6s var(--ease);
+}
+
+.econ-card:hover::before {
+  transform: scaleX(1);
+}
+
+.econ-tag {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gray-500);
+  margin-bottom: 20px;
+}
+
+.econ-product {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--white-pure);
+  margin-bottom: 24px;
+  line-height: 1.3;
+}
+
+.econ-metrics {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.econ-metric {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+.econ-metric:last-child { border-bottom: none; }
+
+.econ-metric-label {
+  font-size: 13px;
+  color: var(--gray-400);
+}
+
+.econ-metric-value {
+  font-family: var(--mono);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--orange);
+}
+
+.econ-roi {
+  margin-top: 24px;
+  padding: 16px;
+  background: var(--orange-surface);
+  border: 1px solid var(--orange-border);
+  border-radius: 2px;
+  text-align: center;
+}
+
+.econ-roi-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--gray-400);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.econ-roi-value {
+  font-family: var(--mono);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--orange);
+}
+
+/* ═══════════════════════════════════════
+   COMPARISON TABLE — INDUSTRIAL GRID
+   ═══════════════════════════════════════ */
+.comparison {
+  background: var(--black);
+}
+
+.comparison-table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.comparison-table th,
+.comparison-table td {
+  padding: 20px 24px;
+  text-align: left;
+  font-size: 14px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+.comparison-table thead th {
+  background: var(--black-card);
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gray-400);
+  padding: 16px 24px;
+}
+
+.comparison-table thead th:first-child {
+  color: var(--white-pure);
+}
+
+.comparison-table thead th.highlight {
+  color: var(--orange);
+  background: rgba(239,127,26,0.06);
+  border-bottom: 2px solid var(--orange);
+}
+
+.comparison-table tbody td {
+  color: var(--gray-300);
+  background: var(--black-rich);
+}
+
+.comparison-table tbody td.highlight {
+  color: var(--white-pure);
+  background: rgba(239,127,26,0.03);
+  font-weight: 600;
+}
+
+.comparison-table tbody td .check {
+  color: var(--green);
+}
+
+.comparison-table tbody td .cross {
+  color: var(--red);
+  opacity: 0.6;
+}
+
+.comparison-table tbody tr:hover td {
+  background: var(--black-surface);
+}
+
+.comparison-table tbody tr:hover td.highlight {
+  background: rgba(239,127,26,0.08);
+}
+
+/* Responsive table */
+@media (max-width: 767px) {
+  .comparison-table-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .comparison-table { min-width: 600px; }
+}
+
+/* ═══════════════════════════════════════
+   CASES / APPLICATIONS — IMAGE GRID
+   ═══════════════════════════════════════ */
+.cases {
+  background: var(--black-rich);
+  border-top: 1px solid rgba(255,255,255,0.04);
+}
+
+.cases-grid {
+  display: grid;
+  gap: 24px;
+}
+
+@media (min-width: 768px) {
+  .cases-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+.case-card {
+  position: relative;
+  border-radius: 2px;
+  overflow: hidden;
+  aspect-ratio: 4/3;
+  cursor: pointer;
+}
+
+.case-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s var(--ease), filter 0.8s;
+  filter: brightness(0.55) saturate(0.8);
+}
+
+.case-card:hover img {
+  transform: scale(1.05);
+  filter: brightness(0.7) saturate(1);
+}
+
+.case-card .case-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 32px;
+  background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 60%);
+}
+
+.case-card .case-tag {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: 10px;
+}
+
+.case-card h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--white-pure);
+  line-height: 1.3;
+  margin-bottom: 8px;
+}
+
+.case-card p {
+  font-size: 13px;
+  color: var(--gray-400);
+  line-height: 1.6;
+}
+
+/* Ingredients tags */
+.ingredients {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 48px;
+  padding-top: 48px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+
+.ingredients .tag {
+  padding: 8px 20px;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 2px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--gray-300);
+  transition: all 0.3s;
+}
+
+.ingredients .tag:hover {
+  border-color: var(--orange-border);
+  color: var(--orange);
+  background: var(--orange-surface);
+}
+
+/* ═══════════════════════════════════════
+   PROCESS / STEPS — TIMELINE
+   ═══════════════════════════════════════ */
+.process {
+  background: var(--black);
+}
+
+.steps-grid {
+  display: grid;
+  gap: 1px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 2px;
+}
+
+@media (min-width: 768px) {
+  .steps-grid { grid-template-columns: repeat(5, 1fr); }
+}
+
+.step-card {
+  padding: 36px 28px;
+  background: var(--black-card);
+  display: flex;
+  flex-direction: column;
+  transition: background 0.4s;
+}
+
+.step-card:hover {
+  background: var(--black-surface);
+}
+
+.step-num {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: var(--orange);
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 2px solid var(--orange);
+  display: inline-block;
+  align-self: flex-start;
+}
+
+.step-card h4 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--white-pure);
+  margin-bottom: 10px;
+  line-height: 1.3;
+}
+
+.step-card p {
+  font-size: 13px;
+  color: var(--gray-400);
+  line-height: 1.7;
+  flex: 1;
+}
+
+.step-duration {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 16px;
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--gray-500);
+  letter-spacing: 0.05em;
+}
+
+/* ═══════════════════════════════════════
+   ABOUT — SPLIT SECTION
+   ═══════════════════════════════════════ */
+.about {
+  background: var(--black-rich);
+  border-top: 1px solid rgba(255,255,255,0.04);
+}
+
+.about-grid {
+  display: grid;
+  gap: 64px;
+  align-items: center;
+}
+
+@media (min-width: 900px) {
+  .about-grid { grid-template-columns: 1fr 1fr; }
+}
+
+.about-image {
+  position: relative;
+  aspect-ratio: 4/3;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.about-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.7);
+}
+
+.about-image .about-badge {
+  position: absolute;
+  bottom: 24px;
+  right: 24px;
+  padding: 12px 20px;
+  background: rgba(0,0,0,0.8);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--orange-border);
+  border-radius: 2px;
+}
+
+.about-badge .about-badge-num {
+  font-family: var(--mono);
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--orange);
+  line-height: 1;
+}
+
+.about-badge .about-badge-text {
+  font-size: 11px;
+  color: var(--gray-400);
+  margin-top: 4px;
+}
+
+.about-text .heading em {
+  color: var(--orange);
+  font-style: normal;
+}
+
+.about-text p {
+  font-size: 15px;
+  color: var(--gray-300);
+  line-height: 1.8;
+  margin-bottom: 16px;
+}
+
+.about-facts {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-top: 32px;
+}
+
+.about-fact {
+  padding: 20px;
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 2px;
+}
+
+.about-fact-val {
+  font-family: var(--mono);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--orange);
+  margin-bottom: 4px;
+}
+
+.about-fact-label {
+  font-size: 12px;
+  color: var(--gray-400);
+}
+
+/* ═══════════════════════════════════════
+   CTA — FINAL FORM
+   ═══════════════════════════════════════ */
+.cta-section {
+  position: relative;
+  background: var(--black);
+  overflow: hidden;
+}
+
+.cta-section::before {
+  content: '';
+  position: absolute;
+  top: -200px;
+  right: -200px;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(239,127,26,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.cta-inner {
+  display: grid;
+  gap: 64px;
+  align-items: start;
+}
+
+@media (min-width: 900px) {
+  .cta-inner { grid-template-columns: 1fr 1fr; }
+}
+
+.cta-text .heading em {
+  color: var(--orange);
+  font-style: normal;
+}
+
+.cta-benefits {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 32px;
+}
+
+.cta-benefit {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+
+.cta-benefit .check-icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--orange);
+  border-radius: 2px;
+  font-size: 11px;
+  color: var(--orange);
+  margin-top: 2px;
+}
+
+.cta-benefit span {
+  font-size: 14px;
+  color: var(--gray-300);
+  line-height: 1.6;
+}
+
+/* Form */
+.form-card {
+  padding: 48px 40px;
+  background: var(--black-card);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 2px;
+}
+
+.form-card h3 {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--white-pure);
+  margin-bottom: 8px;
+}
+
+.form-card .form-sub {
+  font-size: 13px;
+  color: var(--gray-400);
+  margin-bottom: 32px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gray-400);
+  margin-bottom: 8px;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 14px 16px;
+  background: var(--black-rich);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 2px;
+  color: var(--white-pure);
+  font-family: var(--font);
+  font-size: 14px;
+  transition: border-color 0.3s;
+  outline: none;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: var(--gray-600);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: var(--orange);
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.form-submit {
+  width: 100%;
+  padding: 18px;
+  background: var(--orange);
+  color: var(--black);
+  border: none;
+  border-radius: 2px;
+  font-family: var(--font);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s var(--ease);
+}
+
+.form-submit:hover {
+  background: var(--orange-bright);
+  transform: translateY(-1px);
+}
+
+.form-note {
+  font-size: 11px;
+  color: var(--gray-600);
+  margin-top: 16px;
+  text-align: center;
+}
+
+/* ═══════════════════════════════════════
+   FOOTER
+   ═══════════════════════════════════════ */
+.footer {
+  padding: 48px 0;
+  border-top: 1px solid rgba(255,255,255,0.04);
+  background: var(--black);
+}
+
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.footer-logo {
+  font-family: var(--mono);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--gray-500);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.footer-logo em {
+  color: var(--orange);
+  font-style: normal;
+}
+
+.footer-info {
+  font-size: 12px;
+  color: var(--gray-600);
+  text-align: right;
+}
+
+.footer-info a {
+  color: var(--gray-400);
+  transition: color 0.3s;
+}
+
+.footer-info a:hover { color: var(--orange); }
+
+/* ═══════════════════════════════════════
+   SCROLL REVEAL
+   ═══════════════════════════════════════ */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s var(--ease-out), transform 0.8s var(--ease-out);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-d1 { transition-delay: 0.1s; }
+.reveal-d2 { transition-delay: 0.2s; }
+.reveal-d3 { transition-delay: 0.3s; }
+</style>
+</head>
+
+<body>
+
+<!-- ═══════════ NAVIGATION ═══════════ -->
+<nav class="nav" id="nav">
+  <div class="container nav-inner">
+    <a href="#" class="nav-logo">ULTRA<em>MOL</em></a>
+    <ul class="nav-links">
+      <li><a href="#product">Оборудование</a></li>
+      <li><a href="#economics">Экономика</a></li>
+      <li><a href="#cases">Применение</a></li>
+      <li><a href="#about">О компании</a></li>
+    </ul>
+    <a href="#form" class="nav-cta">Оставить заявку</a>
+  </div>
+</nav>
+
+<!-- ═══════════ HERO ═══════════ -->
+<section class="hero" id="hero">
+  <div class="hero-bg"></div>
+  <div class="container hero-content">
+    <div class="hero-badge">
+      <span class="dot"></span>
+      <span>Global Ingredients Show 2026 · Стенд УльтраМол</span>
+    </div>
+
+    <h1>Измельчительное<br>оборудование для<br><em>пищевых ингредиентов</em></h1>
+
+    <p class="hero-sub">
+      Российские мельничные комплексы с сертификацией <strong>ХАССП</strong>. Нержавеющая сталь AISI304. Изготовление под ключ <strong>от&nbsp;2&nbsp;месяцев</strong>. Замена импортных линий&nbsp;— без компромиссов по качеству.
+    </p>
+
+    <div class="hero-actions">
+      <a href="#form" class="btn-primary">→ Записаться на тестовое измельчение</a>
+      <a href="#product" class="btn-ghost">Подробнее об оборудовании</a>
+    </div>
+
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hero-stat-num">50+</div>
+        <div class="hero-stat-label">запущенных комплексов</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">12 лет</div>
+        <div class="hero-stat-label">разработки и производства</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">от 5 мкм</div>
+        <div class="hero-stat-label">размер частиц на выходе</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">500 кг/ч</div>
+        <div class="hero-stat-label">максимальная производительность</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ PROBLEMS ═══════════ -->
+<section class="problems" id="problems">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="label">Знакомая ситуация?</div>
+      <h2 class="heading">Три причины, почему производства<br><em class="em-orange">теряют деньги</em> на измельчении</h2>
+      <div class="section-divider"></div>
+    </div>
+
+    <div class="problems-grid reveal reveal-d1">
+      <div class="problem-card">
+        <div class="problem-num">01</div>
+        <div class="problem-title">Импортное оборудование недоступно</div>
+        <p class="problem-desc">Европейские линии Hosokawa, Retsch, IKA — от 3.5 млн €. Санкции, логистика, запчасти — сроки поставки растягиваются до 12 месяцев и более.</p>
+        <div class="problem-cost">Стоимость простоя: от 2 млн ₽/мес</div>
+      </div>
+      <div class="problem-card">
+        <div class="problem-num">02</div>
+        <div class="problem-title">Китайское — лотерея по качеству</div>
+        <p class="problem-desc">Срок поставки 8–10 месяцев. Нет сертификации ХАССП. Проблемы с документацией на русском языке и отсутствие сервиса в России.</p>
+        <div class="problem-cost">Рекламации: до 30% поставок</div>
+      </div>
+      <div class="problem-card">
+        <div class="problem-num">03</div>
+        <div class="problem-title">Старое советское оборудование изношено</div>
+        <p class="problem-desc">Морально устаревшие конструкции. Нет автоматики и цифрового управления. Невозможно обеспечить стабильный гранулометрический состав.</p>
+        <div class="problem-cost">Потери сырья: до 15%</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ PRODUCT ═══════════ -->
+<section class="product" id="product">
+  <div class="container">
+    <div class="product-hero-img reveal">
+      <img src="pic-1.png" alt="Мельничный комплекс ММУ — УльтраМол">
+      <div class="overlay-label">
+        <span>ММУ-460 / ММУ-600 · Роторно-вихревой принцип</span>
+      </div>
+    </div>
+
+    <div class="product-intro">
+      <div class="reveal">
+        <div class="label">Решение</div>
+        <h2 class="heading">Мельничный комплекс ММУ — <em>российская альтернатива</em>, которая работает</h2>
+        <div class="section-divider"></div>
+      </div>
+      <div class="reveal reveal-d1">
+        <p class="body">Роторно-вихревая технология измельчения обеспечивает стабильный результат от 5 до 500 микрон. Полностью изготовлен из нержавеющей стали AISI304 с фторопластовыми футеровками. Встроенная система из 6 контуров охлаждения сохраняет свойства термочувствительных продуктов.</p>
+        <br>
+        <p class="body">Управление — ПЛК + сенсорная HMI-панель. Полная автоматизация процесса. Сертификация ХАССП для пищевого производства.</p>
+      </div>
+    </div>
+
+    <div class="specs-grid reveal reveal-d2">
+      <div class="spec-card">
+        <div class="spec-value">5–500</div>
+        <div class="spec-name">микрон на выходе</div>
+      </div>
+      <div class="spec-card">
+        <div class="spec-value">500</div>
+        <div class="spec-name">кг/час макс.</div>
+      </div>
+      <div class="spec-card">
+        <div class="spec-value">6</div>
+        <div class="spec-name">контуров охлаждения</div>
+      </div>
+      <div class="spec-card">
+        <div class="spec-value">AISI304</div>
+        <div class="spec-name">нержавеющая сталь</div>
+      </div>
+      <div class="spec-card">
+        <div class="spec-value">ПЛК</div>
+        <div class="spec-name">автоматическое управление</div>
+      </div>
+      <div class="spec-card">
+        <div class="spec-value">ХАССП</div>
+        <div class="spec-name">сертификация</div>
+      </div>
+      <div class="spec-card">
+        <div class="spec-value">от 2 мес</div>
+        <div class="spec-name">срок изготовления</div>
+      </div>
+      <div class="spec-card">
+        <div class="spec-value">24/7</div>
+        <div class="spec-name">техподдержка</div>
+      </div>
+    </div>
+
+    <div class="features-grid">
+      <div class="feature-item reveal">
+        <div class="icon">⚙️</div>
+        <h4>Роторно-вихревой принцип</h4>
+        <p>Запатентованная технология измельчения без нагрева сырья. Сохраняет биологическую активность ингредиентов.</p>
+      </div>
+      <div class="feature-item reveal reveal-d1">
+        <div class="icon">❄️</div>
+        <h4>6 контуров охлаждения</h4>
+        <p>Независимые контуры охлаждения для каждой зоны. Температура продукта не превышает 40°C.</p>
+      </div>
+      <div class="feature-item reveal reveal-d2">
+        <div class="icon">🔧</div>
+        <h4>Быстрая переналадка</h4>
+        <p>Смена продукта за 30 минут. Разборная конструкция для полной санитарной обработки.</p>
+      </div>
+      <div class="feature-item reveal">
+        <div class="icon">📊</div>
+        <h4>Цифровое управление</h4>
+        <p>ПЛК Siemens + сенсорная HMI-панель. Автоматические рецепты, логирование параметров.</p>
+      </div>
+      <div class="feature-item reveal reveal-d1">
+        <div class="icon">🛡️</div>
+        <h4>Пищевая безопасность</h4>
+        <p>Сертификация ХАССП. Все контактные поверхности — AISI304 с фторопластовыми футеровками.</p>
+      </div>
+      <div class="feature-item reveal reveal-d2">
+        <div class="icon">🏗️</div>
+        <h4>Под ключ</h4>
+        <p>Проект, производство, монтаж, пусконаладка, обучение — всё в одном контракте.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ ECONOMICS ═══════════ -->
+<section class="economics" id="economics">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="label">Экономика</div>
+      <h2 class="heading">Превращаем сырьё в <em class="em-orange">прибыль</em></h2>
+      <div class="section-divider"></div>
+      <p class="subheading">Каждый комплекс ММУ — это инвестиция, которая окупается за 6-14 месяцев. Вот реальные цифры по трём ключевым продуктам.</p>
+    </div>
+
+    <div class="econ-cards">
+      <div class="econ-card reveal">
+        <div class="econ-tag">// Продукт 01</div>
+        <div class="econ-product">Альбумин пищевой (E1201)</div>
+        <div class="econ-metrics">
+          <div class="econ-metric">
+            <span class="econ-metric-label">Сырьё (гемоглобин КРС)</span>
+            <span class="econ-metric-value">20 ₽/кг</span>
+          </div>
+          <div class="econ-metric">
+            <span class="econ-metric-label">Готовый продукт</span>
+            <span class="econ-metric-value">800 ₽/кг</span>
+          </div>
+          <div class="econ-metric">
+            <span class="econ-metric-label">Объём рынка РФ</span>
+            <span class="econ-metric-value">25-40 млрд ₽</span>
+          </div>
+        </div>
+        <div class="econ-roi">
+          <div class="econ-roi-label">Окупаемость</div>
+          <div class="econ-roi-value">6-8 мес</div>
+        </div>
+      </div>
+
+      <div class="econ-card reveal reveal-d1">
+        <div class="econ-tag">// Продукт 02</div>
+        <div class="econ-product">Специи и пряности</div>
+        <div class="econ-metrics">
+          <div class="econ-metric">
+            <span class="econ-metric-label">Маржинальность</span>
+            <span class="econ-metric-value">до 300%</span>
+          </div>
+          <div class="econ-metric">
+            <span class="econ-metric-label">Выход продукта</span>
+            <span class="econ-metric-value">до 95%</span>
+          </div>
+          <div class="econ-metric">
+            <span class="econ-metric-label">Объём рынка РФ</span>
+            <span class="econ-metric-value">73 млрд ₽</span>
+          </div>
+        </div>
+        <div class="econ-roi">
+          <div class="econ-roi-label">Окупаемость</div>
+          <div class="econ-roi-value">8-12 мес</div>
+        </div>
+      </div>
+
+      <div class="econ-card reveal reveal-d2">
+        <div class="econ-tag">// Продукт 03</div>
+        <div class="econ-product">Силикагель пищевой (E551)</div>
+        <div class="econ-metrics">
+          <div class="econ-metric">
+            <span class="econ-metric-label">Стоимость на рынке</span>
+            <span class="econ-metric-value">160 ₽/кг</span>
+          </div>
+          <div class="econ-metric">
+            <span class="econ-metric-label">Потребление в РФ</span>
+            <span class="econ-metric-value">30 000 т/год</span>
+          </div>
+          <div class="econ-metric">
+            <span class="econ-metric-label">Объём рынка РФ</span>
+            <span class="econ-metric-value">50 млрд ₽</span>
+          </div>
+        </div>
+        <div class="econ-roi">
+          <div class="econ-roi-label">Окупаемость</div>
+          <div class="econ-roi-value">10-14 мес</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ COMPARISON ═══════════ -->
+<section class="comparison" id="comparison">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="label">Сравнение</div>
+      <h2 class="heading">Почему <em class="em-orange">УльтраМол</em>,<br>а не импорт или Китай</h2>
+      <div class="section-divider"></div>
+    </div>
+
+    <div class="comparison-table-wrap reveal reveal-d1">
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th>Параметр</th>
+            <th>Европа</th>
+            <th>Китай</th>
+            <th class="highlight">УльтраМол</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Стоимость</td>
+            <td>от 35 млн ₽</td>
+            <td>от 20 млн ₽</td>
+            <td class="highlight">от 4 млн ₽</td>
+          </tr>
+          <tr>
+            <td>Срок поставки</td>
+            <td>12-18 мес</td>
+            <td>8-10 мес</td>
+            <td class="highlight">2-4 мес</td>
+          </tr>
+          <tr>
+            <td>Сертификация ХАССП</td>
+            <td><span class="check">✓</span></td>
+            <td><span class="cross">✗</span></td>
+            <td class="highlight"><span class="check">✓</span></td>
+          </tr>
+          <tr>
+            <td>Сервис в РФ</td>
+            <td><span class="cross">✗</span> (санкции)</td>
+            <td><span class="cross">✗</span> (удалённо)</td>
+            <td class="highlight"><span class="check">✓</span> 24/7</td>
+          </tr>
+          <tr>
+            <td>Запчасти</td>
+            <td>6-12 мес</td>
+            <td>3-6 мес</td>
+            <td class="highlight">2-5 дней</td>
+          </tr>
+          <tr>
+            <td>Документация на рус.</td>
+            <td><span class="check">✓</span> (перевод)</td>
+            <td><span class="cross">✗</span></td>
+            <td class="highlight"><span class="check">✓</span> оригинал</td>
+          </tr>
+          <tr>
+            <td>Тестовое измельчение</td>
+            <td><span class="cross">✗</span></td>
+            <td><span class="cross">✗</span></td>
+            <td class="highlight"><span class="check">✓</span> бесплатно</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ CASES ═══════════ -->
+<section class="cases" id="cases">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="label">Применение</div>
+      <h2 class="heading">Что можно измельчать<br>на комплексах <em class="em-orange">ММУ</em></h2>
+      <div class="section-divider"></div>
+    </div>
+
+    <div class="cases-grid">
+      <div class="case-card reveal">
+        <img src="https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=800&q=80" alt="Специи">
+        <div class="case-overlay">
+          <div class="case-tag">Рынок: 73 млрд ₽</div>
+          <h3>Специи и пряности</h3>
+          <p>Перец, корица, куркума, паприка — помол до 50 мкм с сохранением аромата</p>
+        </div>
+      </div>
+      <div class="case-card reveal reveal-d1">
+        <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?w=800&q=80" alt="Порошки">
+        <div class="case-overlay">
+          <div class="case-tag">Рынок: 25-40 млрд ₽</div>
+          <h3>Белковые ингредиенты</h3>
+          <p>Альбумин, казеин, коллаген — сушка и измельчение до пищевого порошка</p>
+        </div>
+      </div>
+      <div class="case-card reveal reveal-d2">
+        <img src="https://images.unsplash.com/photo-1473093295043-cdd812d0e601?w=800&q=80" alt="Пищевые добавки">
+        <div class="case-overlay">
+          <div class="case-tag">Рынок: 50 млрд ₽</div>
+          <h3>Пищевые добавки</h3>
+          <p>Силикагель E551, сахарная пудра, крахмалы — точный контроль фракции</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="ingredients reveal">
+      <div class="tag">Альбумин E1201</div>
+      <div class="tag">Специи</div>
+      <div class="tag">Силикагель E551</div>
+      <div class="tag">Казеин</div>
+      <div class="tag">Коллаген</div>
+      <div class="tag">Сахарная пудра</div>
+      <div class="tag">Крахмалы</div>
+      <div class="tag">Сухое молоко</div>
+      <div class="tag">Костная мука</div>
+      <div class="tag">Яичный порошок</div>
+      <div class="tag">Растительные экстракты</div>
+      <div class="tag">Какао-порошок</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ PROCESS ═══════════ -->
+<section class="process" id="process">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="label">Процесс</div>
+      <h2 class="heading">От заявки до запуска —<br><em class="em-orange">5 шагов</em></h2>
+      <div class="section-divider"></div>
+    </div>
+
+    <div class="steps-grid">
+      <div class="step-card reveal">
+        <div class="step-num">01</div>
+        <h4>Тестовое измельчение</h4>
+        <p>Привозите образец сырья — мы измельчаем на нашем оборудовании и показываем результат. Бесплатно.</p>
+        <span class="step-duration">⏱ 1-3 дня</span>
+      </div>
+      <div class="step-card reveal reveal-d1">
+        <div class="step-num">02</div>
+        <h4>Техническое задание</h4>
+        <p>Согласуем параметры: производительность, фракция, материал, автоматизация, площадка установки.</p>
+        <span class="step-duration">⏱ 3-5 дней</span>
+      </div>
+      <div class="step-card reveal reveal-d2">
+        <div class="step-num">03</div>
+        <h4>Производство</h4>
+        <p>Изготовление комплекса на нашем заводе в Курске. Контроль качества на каждом этапе.</p>
+        <span class="step-duration">⏱ От 2 месяцев</span>
+      </div>
+      <div class="step-card reveal">
+        <div class="step-num">04</div>
+        <h4>Монтаж и пусконаладка</h4>
+        <p>Наши инженеры приезжают на объект, монтируют и запускают оборудование. Обучаем ваш персонал.</p>
+        <span class="step-duration">⏱ 5-10 дней</span>
+      </div>
+      <div class="step-card reveal reveal-d1">
+        <div class="step-num">05</div>
+        <h4>Сервисная поддержка</h4>
+        <p>Гарантия, удалённый мониторинг, запчасти за 2-5 дней. Мы рядом — в Курске, не в Шанхае.</p>
+        <span class="step-duration">∞ Постоянно</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ ABOUT ═══════════ -->
+<section class="about" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-image reveal">
+        <img src="pic-2.png" alt="Сборка мельничного комплекса ММУ — УльтраМол">
+        <div class="about-badge">
+          <div class="about-badge-num">12+</div>
+          <div class="about-badge-text">лет на рынке</div>
+        </div>
+      </div>
+      <div class="about-text">
+        <div class="reveal">
+          <div class="label">О компании</div>
+          <h2 class="heading">Разработчики,<br>а не <em>сборщики</em></h2>
+          <div class="section-divider"></div>
+        </div>
+        <p class="reveal reveal-d1">УльтраМол — российский производитель измельчительного оборудования из Курска. Мы не перепродаём чужие решения: проектируем, производим и обслуживаем мельничные комплексы полного цикла.</p>
+        <p class="reveal reveal-d2">Наша запатентованная роторно-вихревая технология позволяет измельчать термочувствительные продукты без потери свойств. Более 50 комплексов запущены на предприятиях по всей России.</p>
+        <div class="about-facts reveal reveal-d3">
+          <div class="about-fact">
+            <div class="about-fact-val">50+</div>
+            <div class="about-fact-label">комплексов запущено</div>
+          </div>
+          <div class="about-fact">
+            <div class="about-fact-val">Курск</div>
+            <div class="about-fact-label">производственная база</div>
+          </div>
+          <div class="about-fact">
+            <div class="about-fact-val">3</div>
+            <div class="about-fact-label">патента на технологию</div>
+          </div>
+          <div class="about-fact">
+            <div class="about-fact-val">24/7</div>
+            <div class="about-fact-label">сервисная поддержка</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ CTA + FORM ═══════════ -->
+<section class="cta-section" id="form">
+  <div class="container">
+    <div class="cta-inner">
+      <div class="cta-text reveal">
+        <div class="label">Начать</div>
+        <h2 class="heading">Запишитесь на <em class="em-orange">тестовое измельчение</em> вашего сырья</h2>
+        <div class="section-divider"></div>
+        <p class="subheading">Привезите образец — мы покажем результат. Это бесплатно и ни к чему не обязывает.</p>
+
+        <div class="cta-benefits">
+          <div class="cta-benefit">
+            <span class="check-icon">✓</span>
+            <span>Бесплатное тестовое измельчение вашего сырья</span>
+          </div>
+          <div class="cta-benefit">
+            <span class="check-icon">✓</span>
+            <span>Расчёт экономики под ваш продукт</span>
+          </div>
+          <div class="cta-benefit">
+            <span class="check-icon">✓</span>
+            <span>Коммерческое предложение за 2 рабочих дня</span>
+          </div>
+          <div class="cta-benefit">
+            <span class="check-icon">✓</span>
+            <span>Встреча на Global Ingredients Show (апрель 2026)</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-card reveal reveal-d1">
+        <h3>Оставить заявку</h3>
+        <p class="form-sub">Ответим в течение рабочего дня</p>
+        <form id="contact-form" onsubmit="handleSubmit(event)">
+          <div class="form-group">
+            <label for="name">Имя</label>
+            <input type="text" id="name" name="name" placeholder="Как к вам обращаться" required>
+          </div>
+          <div class="form-group">
+            <label for="company">Компания</label>
+            <input type="text" id="company" name="company" placeholder="Название компании" required>
+          </div>
+          <div class="form-group">
+            <label for="phone">Телефон</label>
+            <input type="tel" id="phone" name="phone" placeholder="+7 (___) ___-__-__" required>
+          </div>
+          <div class="form-group">
+            <label for="material">Что измельчаем?</label>
+            <textarea id="material" name="material" placeholder="Расскажите, какое сырьё и какой результат хотите получить"></textarea>
+          </div>
+          <button type="submit" class="form-submit">Отправить заявку →</button>
+          <p class="form-note">Нажимая кнопку, вы соглашаетесь с обработкой персональных данных</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ FOOTER ═══════════ -->
+<footer class="footer">
+  <div class="container footer-inner">
+    <div class="footer-logo">ULTRA<em>MOL</em></div>
+    <div class="footer-info">
+      <div>ООО «УльтраМол» · Россия, 305000, г. Курск, ул. 2-я Агрегатная, д. 5А</div>
+      <div><a href="https://www.ultramol.ru" target="_blank">ultramol.ru</a> · <a href="tel:+74712747072">+7 (4712) 74-70-72</a> · <a href="mailto:info@ultramol.ru">info@ultramol.ru</a></div>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══════════ SCRIPTS ═══════════ -->
+<script>
+// Navigation
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 60);
+}, { passive: true });
+
+// Scroll reveal — robust version
+(function() {
+  const els = document.querySelectorAll('.reveal');
+  if (!('IntersectionObserver' in window)) {
+    els.forEach(el => el.classList.add('visible'));
+    return;
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -20px 0px' });
+
+  els.forEach(el => observer.observe(el));
+
+  // Fallback: mark anything in viewport after 1.5s
+  setTimeout(() => {
+    els.forEach(el => {
+      if (!el.classList.contains('visible')) {
+        const r = el.getBoundingClientRect();
+        if (r.top < window.innerHeight + 100) {
+          el.classList.add('visible');
+        }
+      }
+    });
+  }, 1500);
+})();
+
+// Form handler
+function handleSubmit(e) {
+  e.preventDefault();
+  const btn = e.target.querySelector('.form-submit');
+  const orig = btn.textContent;
+  btn.textContent = 'Отправлено! ✓';
+  btn.style.background = '#4ade80';
+  setTimeout(() => {
+    btn.textContent = orig;
+    btn.style.background = '';
+    e.target.reset();
+  }, 3000);
+}
+
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    const t = document.querySelector(a.getAttribute('href'));
+    if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+});
+</script>
+</body>
+</html>
