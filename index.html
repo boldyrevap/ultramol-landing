@@ -5,9 +5,63 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>УльтраМол — Измельчительное оборудование для пищевых ингредиентов</title>
 <meta name="description" content="Российские мельничные комплексы с сертификацией ХАССП. Замена импортных линий. Изготовление под ключ от 2 месяцев.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="canonical" href="https://www.ultramol.ru/">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:url" content="https://www.ultramol.ru/">
+<meta property="og:title" content="УльтраМол — Измельчительное оборудование для пищевых ингредиентов">
+<meta property="og:description" content="Российские мельничные комплексы с сертификацией ХАССП. Нержавеющая сталь AISI304. Изготовление под ключ от 2 месяцев.">
+<meta property="og:image" content="https://boldyrevap.github.io/ultramol-landing/hero.webp">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="УльтраМол — Измельчительное оборудование для пищевых ингредиентов">
+<meta name="twitter:description" content="Российские мельничные комплексы с сертификацией ХАССП. Изготовление под ключ от 2 месяцев.">
+<meta name="twitter:image" content="https://boldyrevap.github.io/ultramol-landing/hero.webp">
+
+<!-- Favicon -->
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect rx='12' width='100' height='100' fill='%23111'/><text x='50' y='72' font-size='60' font-weight='800' font-family='sans-serif' text-anchor='middle' fill='%23EF7F1A'>U</text></svg>">
+
+<!-- Preload LCP image -->
+<link rel="preload" as="image" href="hero.webp" type="image/webp" fetchpriority="high">
+
+<!-- JSON-LD -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "УльтраМол",
+  "url": "https://www.ultramol.ru",
+  "logo": "https://boldyrevap.github.io/ultramol-landing/hero.webp",
+  "telephone": "+74712747072",
+  "email": "info@ultramol.ru",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "ул. 2-я Агрегатная, д. 5А",
+    "addressLocality": "Курск",
+    "postalCode": "305000",
+    "addressCountry": "RU"
+  },
+  "description": "Российский производитель измельчительного оборудования для пищевых ингредиентов"
+}
+</script>
 <style>
+/* ═══════════════════════════════════════
+   SELF-HOSTED FONTS
+   ═══════════════════════════════════════ */
+@font-face { font-family: 'Inter'; font-style: normal; font-weight: 400; font-display: swap; src: url('fonts/inter-v20-cyrillic_latin-regular.woff2') format('woff2'); }
+@font-face { font-family: 'Inter'; font-style: normal; font-weight: 500; font-display: swap; src: url('fonts/inter-v20-cyrillic_latin-500.woff2') format('woff2'); }
+@font-face { font-family: 'Inter'; font-style: normal; font-weight: 600; font-display: swap; src: url('fonts/inter-v20-cyrillic_latin-600.woff2') format('woff2'); }
+@font-face { font-family: 'Inter'; font-style: normal; font-weight: 700; font-display: swap; src: url('fonts/inter-v20-cyrillic_latin-700.woff2') format('woff2'); }
+@font-face { font-family: 'Inter'; font-style: normal; font-weight: 800; font-display: swap; src: url('fonts/inter-v20-cyrillic_latin-800.woff2') format('woff2'); }
+@font-face { font-family: 'JetBrains Mono'; font-style: normal; font-weight: 400; font-display: swap; src: url('fonts/jetbrains-mono-v24-cyrillic_latin-regular.woff2') format('woff2'); }
+@font-face { font-family: 'JetBrains Mono'; font-style: normal; font-weight: 500; font-display: swap; src: url('fonts/jetbrains-mono-v24-cyrillic_latin-500.woff2') format('woff2'); }
+@font-face { font-family: 'JetBrains Mono'; font-style: normal; font-weight: 700; font-display: swap; src: url('fonts/jetbrains-mono-v24-cyrillic_latin-700.woff2') format('woff2'); }
+
 /* ═══════════════════════════════════════
    DESIGN SYSTEM — NVIDIA × SpaceX × UltraMol
    Industrial cinematic. Black canvas. Orange signal.
@@ -21,7 +75,7 @@
   --gray-900: #1e1e1e;
   --gray-800: #2a2a2a;
   --gray-700: #3a3a3a;
-  --gray-600: #555555;
+  --gray-600: #737373;
   --gray-500: #757575;
   --gray-400: #999999;
   --gray-300: #b0b0b0;
@@ -217,12 +271,18 @@ a { color: inherit; text-decoration: none; }
   color: var(--black);
 }
 
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
 @media (max-width: 899px) {
   .nav { padding: 10px 0; }
   .nav-inner { gap: 8px; }
   .nav-logo { font-size: 11px; letter-spacing: 0.1em; }
   .nav-cta { padding: 7px 14px; font-size: 10px; white-space: nowrap; }
-  .hero { padding-top: 60px; }
+  .hero { padding-top: 80px; }
 }
 
 /* ═══════════════════════════════════════
@@ -233,9 +293,7 @@ a { color: inherit; text-decoration: none; }
   min-height: 100vh;
   display: flex;
   align-items: flex-end;
-  padding: 0 0 80px;
-  overflow: hidden;
-
+  padding: 80px 0;
 }
 
 .hero-bg {
@@ -298,14 +356,18 @@ a { color: inherit; text-decoration: none; }
   color: var(--orange);
 }
 
+@media (max-width: 899px) {
+  .hero-badge { display: none; }
+}
+
 .hero h1 {
-  font-size: clamp(36px, 6.5vw, 76px);
+  font-size: clamp(32px, 4.5vw, 64px);
   font-weight: 800;
-  line-height: 1.02;
-  letter-spacing: -0.03em;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
   color: var(--white-pure);
   margin-bottom: 28px;
-  max-width: 900px;
+  max-width: 780px;
   animation: fadeUp 1s var(--ease) 0.4s both;
 }
 
@@ -383,6 +445,18 @@ a { color: inherit; text-decoration: none; }
 .btn-ghost:hover {
   background: rgba(255,255,255,0.1);
   border-color: rgba(255,255,255,0.3);
+}
+
+@media (max-width: 599px) {
+  .hero-actions { flex-direction: column; }
+  .hero-actions .btn-primary,
+  .hero-actions .btn-ghost {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+    padding: 16px 24px;
+    font-size: 13px;
+  }
 }
 
 /* Hero stats strip */
@@ -579,6 +653,19 @@ section {
   border-radius: 2px;
 }
 
+@media (max-width: 599px) {
+  .product-hero-img .overlay-label { bottom: 12px; left: 12px; right: 12px; }
+  .product-hero-img .overlay-label span {
+    font-size: 7px;
+    letter-spacing: 0.08em;
+    padding: 6px 10px;
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
 .product-intro {
   display: grid;
   gap: 64px;
@@ -671,7 +758,7 @@ section {
   font-size: 18px;
 }
 
-.feature-item h4 {
+.feature-item h3 {
   font-size: 15px;
   font-weight: 700;
   color: var(--white-pure);
@@ -875,49 +962,6 @@ section {
   background: rgba(239,127,26,0.08);
 }
 
-/* Mobile: hide table, show cards */
-.comparison-cards { display: none; }
-
-@media (max-width: 767px) {
-  .comparison-table-wrap { display: none; }
-  .comparison-cards { display: flex; flex-direction: column; gap: 16px; }
-
-  .compare-card {
-    background: var(--black-card);
-    border: 1px solid rgba(255,255,255,0.06);
-    border-radius: 2px;
-    padding: 20px;
-  }
-  .compare-card-param {
-    font-family: var(--mono);
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--gray-500);
-    margin-bottom: 16px;
-    padding-bottom: 12px;
-    border-bottom: 1px solid rgba(255,255,255,0.06);
-  }
-  .compare-card-rows { display: flex; flex-direction: column; gap: 10px; }
-  .compare-card-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 14px;
-  }
-  .compare-card-row .label { color: var(--gray-400); }
-  .compare-card-row .value { color: var(--gray-300); text-align: right; }
-  .compare-card-row.winner {
-    background: rgba(239,127,26,0.06);
-    margin: 0 -20px;
-    padding: 10px 20px;
-    border-left: 3px solid var(--orange);
-  }
-  .compare-card-row.winner .label { color: var(--orange); font-weight: 700; }
-  .compare-card-row.winner .value { color: var(--white-pure); font-weight: 700; }
-}
-
 /* ═══════════════════════════════════════
    CASES / APPLICATIONS — IMAGE GRID
    ═══════════════════════════════════════ */
@@ -940,7 +984,6 @@ section {
   border-radius: 2px;
   overflow: hidden;
   aspect-ratio: 4/3;
-  cursor: pointer;
 }
 
 .case-card img {
@@ -1060,7 +1103,7 @@ section {
   align-self: flex-start;
 }
 
-.step-card h4 {
+.step-card h3 {
   font-size: 16px;
   font-weight: 700;
   color: var(--white-pure);
@@ -1403,31 +1446,323 @@ section {
 .reveal-d1 { transition-delay: 0.1s; }
 .reveal-d2 { transition-delay: 0.2s; }
 .reveal-d3 { transition-delay: 0.3s; }
+
+/* ═══════════════════════════════════════
+   SKIP LINK
+   ═══════════════════════════════════════ */
+.skip-link {
+  position: fixed;
+  top: -100%;
+  left: 16px;
+  z-index: 200;
+  padding: 12px 24px;
+  background: var(--orange);
+  color: var(--black);
+  font-weight: 700;
+  font-size: 14px;
+  border-radius: 2px;
+  text-decoration: none;
+  transition: top 0.2s;
+}
+
+.skip-link:focus {
+  top: 16px;
+}
+
+/* ═══════════════════════════════════════
+   FOCUS STYLES (a11y)
+   ═══════════════════════════════════════ */
+:focus-visible {
+  outline: 2px solid var(--orange);
+  outline-offset: 2px;
+}
+
+.btn-primary:focus-visible,
+.btn-ghost:focus-visible,
+.nav-cta:focus-visible,
+.form-submit:focus-visible {
+  outline: 2px solid var(--orange-bright);
+  outline-offset: 3px;
+  box-shadow: 0 0 0 4px var(--orange-glow);
+}
+
+/* ═══════════════════════════════════════
+   BURGER MENU (mobile)
+   ═══════════════════════════════════════ */
+.burger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 44px;
+  height: 44px;
+  padding: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 110;
+}
+
+.burger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--white-pure);
+  border-radius: 1px;
+  transition: all 0.3s var(--ease);
+  transform-origin: center;
+}
+
+.burger.active span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.burger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.burger.active span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+@media (max-width: 899px) {
+  .burger { display: flex; }
+
+  .nav-links {
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh;
+    background: #000000;
+    z-index: 105;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s var(--ease), visibility 0.4s;
+  }
+
+  .nav-links.open {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .nav-links a {
+    font-size: 18px;
+    color: var(--white-pure);
+    letter-spacing: 0.1em;
+  }
+
+  .body-menu-open { overflow: hidden; }
+}
+
+/* ═══════════════════════════════════════
+   COMPARISON CARDS (mobile)
+   ═══════════════════════════════════════ */
+.comparison-cards { display: none; }
+
+@media (max-width: 767px) {
+  .comparison-table-wrap { display: none; }
+
+  .comparison-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .compare-card {
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  .compare-card-param {
+    padding: 14px 20px;
+    background: var(--black-card);
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--white-pure);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .compare-card-rows {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .compare-card-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 20px;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+
+  .compare-card-row:last-child { border-bottom: none; }
+
+  .compare-card-row .label {
+    font-size: 13px;
+    color: var(--gray-400);
+    font-family: var(--font);
+    letter-spacing: 0;
+    text-transform: none;
+  }
+
+  .compare-card-row .value {
+    font-family: var(--mono);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--gray-300);
+  }
+
+  .compare-card-row.winner {
+    background: rgba(239,127,26,0.06);
+    border-left: 3px solid var(--orange);
+  }
+
+  .compare-card-row.winner .label {
+    color: var(--orange);
+    font-weight: 600;
+  }
+
+  .compare-card-row.winner .value {
+    color: var(--white-pure);
+    font-weight: 700;
+  }
+}
+
+/* ═══════════════════════════════════════
+   PRIVACY SECTION
+   ═══════════════════════════════════════ */
+.privacy {
+  padding: 80px 0;
+  border-top: 1px solid rgba(255,255,255,0.04);
+  background: var(--black-rich);
+}
+
+.privacy h2 {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--white-pure);
+  margin-bottom: 24px;
+}
+
+.privacy p {
+  font-size: 13px;
+  color: var(--gray-400);
+  line-height: 1.8;
+  margin-bottom: 12px;
+  max-width: 800px;
+}
+
+.privacy ul {
+  list-style: none;
+  margin: 16px 0;
+  padding: 0;
+}
+
+.privacy li {
+  font-size: 13px;
+  color: var(--gray-400);
+  line-height: 1.8;
+  padding-left: 20px;
+  position: relative;
+}
+
+.privacy li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: var(--orange);
+}
+
+/* ═══════════════════════════════════════
+   SCREEN READER ONLY
+   ═══════════════════════════════════════ */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ═══════════════════════════════════════
+   REDUCED MOTION
+   ═══════════════════════════════════════ */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal { opacity: 1; transform: none; }
+}
+
+/* ═══════════════════════════════════════
+   COMPARISON CROSS/CHECK STYLES
+   ═══════════════════════════════════════ */
+.compare-card-row .value.neg {
+  color: var(--red);
+  opacity: 0.6;
+}
+
+.mt-16 { margin-top: 16px; }
+
+.privacy a, .form-note a {
+  color: var(--gray-400);
+  text-decoration: underline;
+  transition: color 0.3s;
+}
+.privacy a:hover, .form-note a:hover { color: var(--orange); }
 </style>
 </head>
 
 <body>
 
+<a href="#main" class="skip-link">Перейти к содержанию</a>
+
 <!-- ═══════════ NAVIGATION ═══════════ -->
-<nav class="nav" id="nav">
+<header>
+<nav class="nav" id="nav" aria-label="Основная навигация">
   <div class="container nav-inner">
     <a href="#" class="nav-logo">ULTRA<em>MOL</em></a>
-    <ul class="nav-links">
+    <ul class="nav-links" id="nav-links">
       <li><a href="#product">Оборудование</a></li>
       <li><a href="#economics">Экономика</a></li>
       <li><a href="#cases">Применение</a></li>
       <li><a href="#about">О компании</a></li>
     </ul>
-    <a href="#form" class="nav-cta">Оставить заявку</a>
+    <div class="nav-right">
+      <a href="#form" class="nav-cta">Оставить заявку</a>
+      <button class="burger" aria-label="Меню" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
   </div>
 </nav>
+</header>
+
+<main id="main">
 
 <!-- ═══════════ HERO ═══════════ -->
 <section class="hero" id="hero">
   <div class="hero-bg"></div>
   <div class="container hero-content">
     <div class="hero-badge">
-      <span class="dot"></span>
+      <span class="dot" aria-hidden="true"></span>
       <span>Global Ingredients Show 2026 · Стенд УльтраМол</span>
     </div>
 
@@ -1513,8 +1848,7 @@ section {
       </div>
       <div class="reveal reveal-d1">
         <p class="body">Роторно-вихревая технология измельчения обеспечивает стабильный результат от 5 до 500 микрон. Полностью изготовлен из нержавеющей стали AISI304 с фторопластовыми футеровками. Встроенная система из 6 контуров охлаждения сохраняет свойства термочувствительных продуктов.</p>
-        <br>
-        <p class="body">Управление — ПЛК + сенсорная HMI-панель. Полная автоматизация процесса. Сертификация ХАССП для пищевого производства.</p>
+        <p class="body mt-16">Управление — ПЛК + сенсорная HMI-панель. Полная автоматизация процесса. Сертификация ХАССП для пищевого производства.</p>
       </div>
     </div>
 
@@ -1555,33 +1889,33 @@ section {
 
     <div class="features-grid">
       <div class="feature-item reveal">
-        <div class="icon">⚙️</div>
-        <h4>Роторно-вихревой принцип</h4>
+        <div class="icon" aria-hidden="true">⚙️</div>
+        <h3>Роторно-вихревой принцип</h3>
         <p>Запатентованная технология измельчения без нагрева сырья. Сохраняет биологическую активность ингредиентов.</p>
       </div>
       <div class="feature-item reveal reveal-d1">
-        <div class="icon">❄️</div>
-        <h4>6 контуров охлаждения</h4>
+        <div class="icon" aria-hidden="true">❄️</div>
+        <h3>6 контуров охлаждения</h3>
         <p>Независимые контуры охлаждения для каждой зоны. Температура продукта не превышает 40°C.</p>
       </div>
       <div class="feature-item reveal reveal-d2">
-        <div class="icon">🔧</div>
-        <h4>Быстрая переналадка</h4>
+        <div class="icon" aria-hidden="true">🔧</div>
+        <h3>Быстрая переналадка</h3>
         <p>Смена продукта за 30 минут. Разборная конструкция для полной санитарной обработки.</p>
       </div>
       <div class="feature-item reveal">
-        <div class="icon">📊</div>
-        <h4>Цифровое управление</h4>
+        <div class="icon" aria-hidden="true">📊</div>
+        <h3>Цифровое управление</h3>
         <p>ПЛК Siemens + сенсорная HMI-панель. Автоматические рецепты, логирование параметров.</p>
       </div>
       <div class="feature-item reveal reveal-d1">
-        <div class="icon">🛡️</div>
-        <h4>Пищевая безопасность</h4>
+        <div class="icon" aria-hidden="true">🛡️</div>
+        <h3>Пищевая безопасность</h3>
         <p>Сертификация ХАССП. Все контактные поверхности — AISI304 с фторопластовыми футеровками.</p>
       </div>
       <div class="feature-item reveal reveal-d2">
-        <div class="icon">🏗️</div>
-        <h4>Под ключ</h4>
+        <div class="icon" aria-hidden="true">🏗️</div>
+        <h3>Под ключ</h3>
         <p>Проект, производство, монтаж, пусконаладка, обучение — всё в одном контракте.</p>
       </div>
     </div>
@@ -1682,6 +2016,7 @@ section {
 
     <div class="comparison-table-wrap reveal reveal-d1">
       <table class="comparison-table">
+        <caption class="sr-only">Сравнение производителей измельчительного оборудования</caption>
         <thead>
           <tr>
             <th>Параметр</th>
@@ -1759,15 +2094,15 @@ section {
         <div class="compare-card-param">Сертификация ХАССП</div>
         <div class="compare-card-rows">
           <div class="compare-card-row"><span class="label">Европа</span><span class="value">✓</span></div>
-          <div class="compare-card-row"><span class="label">Китай</span><span class="value" style="color:var(--red);opacity:0.6">✗</span></div>
+          <div class="compare-card-row"><span class="label">Китай</span><span class="value neg">✗</span></div>
           <div class="compare-card-row winner"><span class="label">УльтраМол</span><span class="value">✓</span></div>
         </div>
       </div>
       <div class="compare-card">
         <div class="compare-card-param">Сервис в РФ</div>
         <div class="compare-card-rows">
-          <div class="compare-card-row"><span class="label">Европа</span><span class="value" style="color:var(--red);opacity:0.6">✗ санкции</span></div>
-          <div class="compare-card-row"><span class="label">Китай</span><span class="value" style="color:var(--red);opacity:0.6">✗ удалённо</span></div>
+          <div class="compare-card-row"><span class="label">Европа</span><span class="value neg">✗ санкции</span></div>
+          <div class="compare-card-row"><span class="label">Китай</span><span class="value neg">✗ удалённо</span></div>
           <div class="compare-card-row winner"><span class="label">УльтраМол</span><span class="value">✓ 24/7</span></div>
         </div>
       </div>
@@ -1783,15 +2118,15 @@ section {
         <div class="compare-card-param">Документация на рус.</div>
         <div class="compare-card-rows">
           <div class="compare-card-row"><span class="label">Европа</span><span class="value">✓ перевод</span></div>
-          <div class="compare-card-row"><span class="label">Китай</span><span class="value" style="color:var(--red);opacity:0.6">✗</span></div>
+          <div class="compare-card-row"><span class="label">Китай</span><span class="value neg">✗</span></div>
           <div class="compare-card-row winner"><span class="label">УльтраМол</span><span class="value">✓ оригинал</span></div>
         </div>
       </div>
       <div class="compare-card">
         <div class="compare-card-param">Тестовое измельчение</div>
         <div class="compare-card-rows">
-          <div class="compare-card-row"><span class="label">Европа</span><span class="value" style="color:var(--red);opacity:0.6">✗</span></div>
-          <div class="compare-card-row"><span class="label">Китай</span><span class="value" style="color:var(--red);opacity:0.6">✗</span></div>
+          <div class="compare-card-row"><span class="label">Европа</span><span class="value neg">✗</span></div>
+          <div class="compare-card-row"><span class="label">Китай</span><span class="value neg">✗</span></div>
           <div class="compare-card-row winner"><span class="label">УльтраМол</span><span class="value">✓ бесплатно</span></div>
         </div>
       </div>
@@ -1864,31 +2199,31 @@ section {
     <div class="steps-grid">
       <div class="step-card reveal">
         <div class="step-num">01</div>
-        <h4>Тестовое измельчение</h4>
+        <h3>Тестовое измельчение</h3>
         <p>Привозите образец сырья — мы измельчаем на нашем оборудовании и показываем результат. Бесплатно.</p>
         <span class="step-duration">⏱ 1-3 дня</span>
       </div>
       <div class="step-card reveal reveal-d1">
         <div class="step-num">02</div>
-        <h4>Техническое задание</h4>
+        <h3>Техническое задание</h3>
         <p>Согласуем параметры: производительность, фракция, материал, автоматизация, площадка установки.</p>
         <span class="step-duration">⏱ 3-5 дней</span>
       </div>
       <div class="step-card reveal reveal-d2">
         <div class="step-num">03</div>
-        <h4>Производство</h4>
+        <h3>Производство</h3>
         <p>Изготовление комплекса на нашем заводе в Курске. Контроль качества на каждом этапе.</p>
         <span class="step-duration">⏱ От 2 месяцев</span>
       </div>
       <div class="step-card reveal">
         <div class="step-num">04</div>
-        <h4>Монтаж и пусконаладка</h4>
+        <h3>Монтаж и пусконаладка</h3>
         <p>Наши инженеры приезжают на объект, монтируют и запускают оборудование. Обучаем ваш персонал.</p>
         <span class="step-duration">⏱ 5-10 дней</span>
       </div>
       <div class="step-card reveal reveal-d1">
         <div class="step-num">05</div>
-        <h4>Сервисная поддержка</h4>
+        <h3>Сервисная поддержка</h3>
         <p>Гарантия, удалённый мониторинг, запчасти за 2-5 дней. Мы рядом — в Курске, не в Шанхае.</p>
         <span class="step-duration">∞ Постоянно</span>
       </div>
@@ -1974,27 +2309,46 @@ section {
         <form id="contact-form" onsubmit="handleSubmit(event)">
           <div class="form-group">
             <label for="name">Имя</label>
-            <input type="text" id="name" name="name" placeholder="Как к вам обращаться" required>
+            <input type="text" id="name" name="name" placeholder="Как к вам обращаться" required aria-required="true" autocomplete="name">
           </div>
           <div class="form-group">
             <label for="company">Компания</label>
-            <input type="text" id="company" name="company" placeholder="Название компании" required>
+            <input type="text" id="company" name="company" placeholder="Название компании" required aria-required="true" autocomplete="organization">
           </div>
           <div class="form-group">
             <label for="phone">Телефон</label>
-            <input type="tel" id="phone" name="phone" placeholder="+7 (___) ___-__-__" required>
+            <input type="tel" id="phone" name="phone" placeholder="+7 (___) ___-__-__" required aria-required="true" autocomplete="tel">
           </div>
           <div class="form-group">
             <label for="material">Что измельчаем?</label>
             <textarea id="material" name="material" placeholder="Расскажите, какое сырьё и какой результат хотите получить"></textarea>
           </div>
           <button type="submit" class="form-submit">Отправить заявку →</button>
-          <p class="form-note">Нажимая кнопку, вы соглашаетесь с обработкой персональных данных</p>
+          <p class="form-note">Нажимая кнопку, вы соглашаетесь с <a href="#privacy">политикой конфиденциальности</a></p>
         </form>
       </div>
     </div>
   </div>
 </section>
+
+<!-- ═══════════ PRIVACY ═══════════ -->
+<section class="privacy" id="privacy">
+  <div class="container">
+    <h2>Политика конфиденциальности</h2>
+    <p>ООО «УльтраМол» (далее — Оператор) обрабатывает персональные данные в соответствии с Федеральным законом от 27.07.2006 N 152-ФЗ «О персональных данных».</p>
+    <p>Заполняя форму на сайте, вы даёте согласие на обработку следующих данных:</p>
+    <ul>
+      <li>Имя</li>
+      <li>Название компании</li>
+      <li>Номер телефона</li>
+      <li>Описание задачи (свободное текстовое поле)</li>
+    </ul>
+    <p>Цель обработки — связь с вами для подготовки коммерческого предложения. Данные не передаются третьим лицам, хранятся на серверах в РФ и удаляются по вашему запросу.</p>
+    <p>Для отзыва согласия или удаления данных напишите на <a href="mailto:info@ultramol.ru">info@ultramol.ru</a>.</p>
+  </div>
+</section>
+
+</main>
 
 <!-- ═══════════ FOOTER ═══════════ -->
 <footer class="footer">
@@ -2002,18 +2356,38 @@ section {
     <div class="footer-logo">ULTRA<em>MOL</em></div>
     <div class="footer-info">
       <div>ООО «УльтраМол» · Россия, 305000, г. Курск, ул. 2-я Агрегатная, д. 5А</div>
-      <div><a href="https://www.ultramol.ru" target="_blank">ultramol.ru</a> · <a href="tel:+74712747072">+7 (4712) 74-70-72</a> · <a href="mailto:info@ultramol.ru">info@ultramol.ru</a></div>
+      <div><a href="https://www.ultramol.ru" target="_blank" rel="noopener noreferrer">ultramol.ru</a> · <a href="tel:+74712747072">+7 (4712) 74-70-72</a> · <a href="mailto:info@ultramol.ru">info@ultramol.ru</a> · <a href="#privacy">Конфиденциальность</a></div>
     </div>
   </div>
 </footer>
 
 <!-- ═══════════ SCRIPTS ═══════════ -->
 <script>
-// Navigation
+// Navigation scroll
 const nav = document.getElementById('nav');
 window.addEventListener('scroll', () => {
   nav.classList.toggle('scrolled', window.scrollY > 60);
 }, { passive: true });
+
+// Burger menu
+const burger = document.querySelector('.burger');
+const navLinks = document.getElementById('nav-links');
+
+burger.addEventListener('click', () => {
+  const isOpen = navLinks.classList.toggle('open');
+  burger.classList.toggle('active', isOpen);
+  burger.setAttribute('aria-expanded', isOpen);
+  document.body.classList.toggle('body-menu-open', isOpen);
+});
+
+navLinks.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => {
+    navLinks.classList.remove('open');
+    burger.classList.remove('active');
+    burger.setAttribute('aria-expanded', 'false');
+    document.body.classList.remove('body-menu-open');
+  });
+});
 
 // Scroll reveal — robust version
 (function() {
@@ -2064,8 +2438,10 @@ function handleSubmit(e) {
 // Smooth scroll
 document.querySelectorAll('a[href^="#"]').forEach(a => {
   a.addEventListener('click', e => {
+    const href = a.getAttribute('href');
+    if (href === '#' || href.length < 2) return;
     e.preventDefault();
-    const t = document.querySelector(a.getAttribute('href'));
+    const t = document.querySelector(href);
     if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
   });
 });
