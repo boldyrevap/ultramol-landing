@@ -217,6 +217,14 @@ a { color: inherit; text-decoration: none; }
   color: var(--black);
 }
 
+@media (max-width: 899px) {
+  .nav { padding: 10px 0; }
+  .nav-inner { gap: 8px; }
+  .nav-logo { font-size: 11px; letter-spacing: 0.1em; }
+  .nav-cta { padding: 7px 14px; font-size: 10px; white-space: nowrap; }
+  .hero { padding-top: 60px; }
+}
+
 /* ═══════════════════════════════════════
    HERO — CINEMATIC FULLSCREEN
    ═══════════════════════════════════════ */
@@ -234,7 +242,7 @@ a { color: inherit; text-decoration: none; }
   position: absolute;
   inset: 0;
   background:
-    url('hero.png') center/cover no-repeat;
+    url('hero.webp') center/cover no-repeat;
   filter: brightness(0.35) contrast(1.1);
 }
 
@@ -264,6 +272,7 @@ a { color: inherit; text-decoration: none; }
   border: 1px solid var(--orange-border);
   border-radius: 2px;
   margin-bottom: 32px;
+  max-width: 100%;
   animation: fadeUp 1s var(--ease) 0.2s both;
 }
 
@@ -866,13 +875,47 @@ section {
   background: rgba(239,127,26,0.08);
 }
 
-/* Responsive table */
+/* Mobile: hide table, show cards */
+.comparison-cards { display: none; }
+
 @media (max-width: 767px) {
-  .comparison-table-wrap {
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
+  .comparison-table-wrap { display: none; }
+  .comparison-cards { display: flex; flex-direction: column; gap: 16px; }
+
+  .compare-card {
+    background: var(--black-card);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 2px;
+    padding: 20px;
   }
-  .comparison-table { min-width: 600px; }
+  .compare-card-param {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gray-500);
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .compare-card-rows { display: flex; flex-direction: column; gap: 10px; }
+  .compare-card-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+  }
+  .compare-card-row .label { color: var(--gray-400); }
+  .compare-card-row .value { color: var(--gray-300); text-align: right; }
+  .compare-card-row.winner {
+    background: rgba(239,127,26,0.06);
+    margin: 0 -20px;
+    padding: 10px 20px;
+    border-left: 3px solid var(--orange);
+  }
+  .compare-card-row.winner .label { color: var(--orange); font-weight: 700; }
+  .compare-card-row.winner .value { color: var(--white-pure); font-weight: 700; }
 }
 
 /* ═══════════════════════════════════════
@@ -1456,7 +1499,7 @@ section {
 <section class="product" id="product">
   <div class="container">
     <div class="product-hero-img reveal">
-      <img src="pic-1.png" alt="Мельничный комплекс ММУ — УльтраМол">
+      <img src="pic-1.webp" alt="Мельничный комплекс ММУ — УльтраМол" loading="lazy" width="1280" height="640">
       <div class="overlay-label">
         <span>ММУ-460 / ММУ-600 · Роторно-вихревой принцип</span>
       </div>
@@ -1693,6 +1736,66 @@ section {
         </tbody>
       </table>
     </div>
+
+    <!-- Mobile cards (hidden on desktop) -->
+    <div class="comparison-cards reveal reveal-d1">
+      <div class="compare-card">
+        <div class="compare-card-param">Стоимость</div>
+        <div class="compare-card-rows">
+          <div class="compare-card-row"><span class="label">Европа</span><span class="value">от 35 млн ₽</span></div>
+          <div class="compare-card-row"><span class="label">Китай</span><span class="value">от 20 млн ₽</span></div>
+          <div class="compare-card-row winner"><span class="label">УльтраМол</span><span class="value">от 4 млн ₽</span></div>
+        </div>
+      </div>
+      <div class="compare-card">
+        <div class="compare-card-param">Срок поставки</div>
+        <div class="compare-card-rows">
+          <div class="compare-card-row"><span class="label">Европа</span><span class="value">12-18 мес</span></div>
+          <div class="compare-card-row"><span class="label">Китай</span><span class="value">8-10 мес</span></div>
+          <div class="compare-card-row winner"><span class="label">УльтраМол</span><span class="value">2-4 мес</span></div>
+        </div>
+      </div>
+      <div class="compare-card">
+        <div class="compare-card-param">Сертификация ХАССП</div>
+        <div class="compare-card-rows">
+          <div class="compare-card-row"><span class="label">Европа</span><span class="value">✓</span></div>
+          <div class="compare-card-row"><span class="label">Китай</span><span class="value" style="color:var(--red);opacity:0.6">✗</span></div>
+          <div class="compare-card-row winner"><span class="label">УльтраМол</span><span class="value">✓</span></div>
+        </div>
+      </div>
+      <div class="compare-card">
+        <div class="compare-card-param">Сервис в РФ</div>
+        <div class="compare-card-rows">
+          <div class="compare-card-row"><span class="label">Европа</span><span class="value" style="color:var(--red);opacity:0.6">✗ санкции</span></div>
+          <div class="compare-card-row"><span class="label">Китай</span><span class="value" style="color:var(--red);opacity:0.6">✗ удалённо</span></div>
+          <div class="compare-card-row winner"><span class="label">УльтраМол</span><span class="value">✓ 24/7</span></div>
+        </div>
+      </div>
+      <div class="compare-card">
+        <div class="compare-card-param">Запчасти</div>
+        <div class="compare-card-rows">
+          <div class="compare-card-row"><span class="label">Европа</span><span class="value">6-12 мес</span></div>
+          <div class="compare-card-row"><span class="label">Китай</span><span class="value">3-6 мес</span></div>
+          <div class="compare-card-row winner"><span class="label">УльтраМол</span><span class="value">2-5 дней</span></div>
+        </div>
+      </div>
+      <div class="compare-card">
+        <div class="compare-card-param">Документация на рус.</div>
+        <div class="compare-card-rows">
+          <div class="compare-card-row"><span class="label">Европа</span><span class="value">✓ перевод</span></div>
+          <div class="compare-card-row"><span class="label">Китай</span><span class="value" style="color:var(--red);opacity:0.6">✗</span></div>
+          <div class="compare-card-row winner"><span class="label">УльтраМол</span><span class="value">✓ оригинал</span></div>
+        </div>
+      </div>
+      <div class="compare-card">
+        <div class="compare-card-param">Тестовое измельчение</div>
+        <div class="compare-card-rows">
+          <div class="compare-card-row"><span class="label">Европа</span><span class="value" style="color:var(--red);opacity:0.6">✗</span></div>
+          <div class="compare-card-row"><span class="label">Китай</span><span class="value" style="color:var(--red);opacity:0.6">✗</span></div>
+          <div class="compare-card-row winner"><span class="label">УльтраМол</span><span class="value">✓ бесплатно</span></div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -1707,7 +1810,7 @@ section {
 
     <div class="cases-grid">
       <div class="case-card reveal">
-        <img src="https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=800&q=80" alt="Специи">
+        <img src="cases-spices.webp" alt="Специи" loading="lazy" width="800" height="600">
         <div class="case-overlay">
           <div class="case-tag">Рынок: 73 млрд ₽</div>
           <h3>Специи и пряности</h3>
@@ -1715,7 +1818,7 @@ section {
         </div>
       </div>
       <div class="case-card reveal reveal-d1">
-        <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?w=800&q=80" alt="Порошки">
+        <img src="cases-protein.webp" alt="Порошки" loading="lazy" width="800" height="600">
         <div class="case-overlay">
           <div class="case-tag">Рынок: 25-40 млрд ₽</div>
           <h3>Белковые ингредиенты</h3>
@@ -1723,7 +1826,7 @@ section {
         </div>
       </div>
       <div class="case-card reveal reveal-d2">
-        <img src="https://images.unsplash.com/photo-1473093295043-cdd812d0e601?w=800&q=80" alt="Пищевые добавки">
+        <img src="cases-additives.webp" alt="Пищевые добавки" loading="lazy" width="800" height="600">
         <div class="case-overlay">
           <div class="case-tag">Рынок: 50 млрд ₽</div>
           <h3>Пищевые добавки</h3>
@@ -1798,7 +1901,7 @@ section {
   <div class="container">
     <div class="about-grid">
       <div class="about-image reveal">
-        <img src="pic-2.png" alt="Сборка мельничного комплекса ММУ — УльтраМол">
+        <img src="pic-2.webp" alt="Сборка мельничного комплекса ММУ — УльтраМол" loading="lazy" width="1280" height="960">
         <div class="about-badge">
           <div class="about-badge-num">12+</div>
           <div class="about-badge-text">лет на рынке</div>
