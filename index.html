@@ -312,17 +312,14 @@
       }
 
       .nav-logo {
-        font-family: var(--mono);
-        font-size: 14px;
-        font-weight: 700;
-        color: var(--white-pure);
-        letter-spacing: 0.2em;
-        text-transform: uppercase;
+        display: flex;
+        align-items: center;
+        text-decoration: none;
       }
 
-      .nav-logo em {
-        color: var(--orange);
-        font-style: normal;
+      .nav-logo svg {
+        height: 24px;
+        width: auto;
       }
 
       .nav-links {
@@ -1931,20 +1928,59 @@
       /* ═══════════════════════════════════════
    PRIVACY SECTION
    ═══════════════════════════════════════ */
-      .privacy {
-        padding: 80px 0;
-        border-top: 1px solid rgba(255, 255, 255, 0.04);
-        background: var(--black-rich);
+      /* ═══════════════════════════════════════
+   MODAL
+   ═══════════════════════════════════════ */
+      .modal-overlay {
+        display: none;
+        position: fixed;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background: rgba(0,0,0,0.85);
+        z-index: 200;
+        align-items: center;
+        justify-content: center;
+        padding: 24px;
+        backdrop-filter: blur(4px);
       }
 
-      .privacy h2 {
+      .modal-overlay.active {
+        display: flex;
+      }
+
+      .modal-content {
+        background: var(--black-card);
+        border: 1px solid rgba(255,255,255,0.08);
+        border-radius: 4px;
+        padding: 48px;
+        max-width: 640px;
+        width: 100%;
+        max-height: 80vh;
+        overflow-y: auto;
+        position: relative;
+      }
+
+      .modal-close {
+        position: absolute;
+        top: 16px; right: 20px;
+        background: none;
+        border: none;
+        color: var(--gray-400);
+        font-size: 28px;
+        cursor: pointer;
+        line-height: 1;
+        transition: color 0.2s;
+      }
+
+      .modal-close:hover { color: var(--white-pure); }
+
+      .modal-content h2 {
         font-size: 20px;
         font-weight: 700;
         color: var(--white-pure);
         margin-bottom: 24px;
       }
 
-      .privacy p {
+      .modal-content p {
         font-size: 13px;
         color: var(--gray-400);
         line-height: 1.8;
@@ -1952,13 +1988,13 @@
         max-width: 800px;
       }
 
-      .privacy ul {
+      .modal-content ul {
         list-style: none;
         margin: 16px 0;
         padding: 0;
       }
 
-      .privacy li {
+      .modal-content li {
         font-size: 13px;
         color: var(--gray-400);
         line-height: 1.8;
@@ -1966,11 +2002,108 @@
         position: relative;
       }
 
-      .privacy li::before {
+      .modal-content li::before {
         content: "—";
         position: absolute;
         left: 0;
         color: var(--orange);
+      }
+
+      .modal-content a {
+        color: var(--gray-400);
+        text-decoration: underline;
+        transition: color 0.3s;
+      }
+
+      .modal-content a:hover { color: var(--orange); }
+
+      @media (max-width: 768px) {
+        .modal-content { padding: 32px 24px; }
+      }
+
+      /* ═══════════════════════════════════════
+   CLIENT CAROUSEL
+   ═══════════════════════════════════════ */
+      .trust-carousel {
+        overflow: hidden;
+        position: relative;
+        margin-top: 40px;
+      }
+
+      .trust-carousel::before,
+      .trust-carousel::after {
+        content: '';
+        position: absolute;
+        top: 0; bottom: 0;
+        width: 80px;
+        z-index: 2;
+        pointer-events: none;
+      }
+
+      .trust-carousel::before {
+        left: 0;
+        background: linear-gradient(90deg, var(--black) 0%, transparent 100%);
+      }
+
+      .trust-carousel::after {
+        right: 0;
+        background: linear-gradient(-90deg, var(--black) 0%, transparent 100%);
+      }
+
+      .trust-track {
+        display: flex;
+        align-items: center;
+        gap: 64px;
+        animation: scroll-logos 40s linear infinite;
+        width: max-content;
+      }
+
+      .trust-track:hover {
+        animation-play-state: paused;
+      }
+
+      @keyframes scroll-logos {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-50%); }
+      }
+
+      .trust-item {
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        opacity: 0.45;
+        transition: opacity 0.3s;
+        white-space: nowrap;
+      }
+
+      .trust-item:hover { opacity: 0.85; }
+
+      .trust-item-icon {
+        width: 40px;
+        height: 40px;
+        border: 1px solid rgba(255,255,255,0.12);
+        border-radius: 4px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 13px;
+        font-weight: 800;
+        color: var(--orange);
+        background: var(--black-card);
+        font-family: var(--mono);
+        flex-shrink: 0;
+      }
+
+      .trust-item-name {
+        font-size: 13px;
+        color: var(--gray-300);
+        font-weight: 500;
+      }
+
+      .trust-item-desc {
+        font-size: 11px;
+        color: var(--gray-600);
       }
 
       /* ═══════════════════════════════════════
@@ -2018,13 +2151,11 @@
         margin-top: 16px;
       }
 
-      .privacy a,
       .form-note a {
         color: var(--gray-400);
         text-decoration: underline;
         transition: color 0.3s;
       }
-      .privacy a:hover,
       .form-note a:hover {
         color: var(--orange);
       }
@@ -2038,7 +2169,7 @@
     <header>
       <nav class="nav" id="nav" aria-label="Основная навигация">
         <div class="container nav-inner">
-          <a href="#" class="nav-logo">ULTRA<em>MOL</em></a>
+          <a href="#" class="nav-logo" aria-label="УльтраМол — на главную"><svg width="160" height="31" viewBox="0 0 160 31" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M148.807 23.3L151.829 13.4558L154.852 23.3H159.658L154.495 9.29999H149.163L144 23.3H148.807Z" fill="#EF7F1A"/><path fill-rule="evenodd" clip-rule="evenodd" d="M139.256 21.7507C139.001 22.1562 138.63 22.703 138.187 23.215C137.914 23.5312 137.613 23.8344 137.294 24.0838C139.038 23.9874 140.746 23.3153 142.097 22.0392C142.273 21.5068 142.3 20.8758 142.257 20.266C142.226 19.8178 142.157 19.3815 142.082 19.0027C141.807 19.5704 141.433 20.0996 140.963 20.5698C140.455 21.0785 139.875 21.4707 139.256 21.7507Z" fill="#EF7F1A"/><path fill-rule="evenodd" clip-rule="evenodd" d="M142.308 14.4193C142.786 15.7456 142.78 17.2011 142.29 18.5099C142.398 18.9771 142.524 19.5979 142.569 20.2451C142.6 20.6976 142.597 21.1651 142.525 21.6017C143.843 20.1477 144.506 18.3234 144.5 16.4698C144.235 15.9886 143.787 15.5308 143.307 15.1342C142.971 14.8561 142.623 14.6241 142.308 14.4193Z" fill="#EF7F1A"/><path fill-rule="evenodd" clip-rule="evenodd" d="M142.094 13.8999C142.497 14.1443 143.016 14.488 143.506 14.8935C143.861 15.1874 144.195 15.4987 144.465 15.8488C144.321 14.0561 143.646 12.1999 142.179 10.9115C141.647 10.7511 141.014 10.7498 140.403 10.8162C139.991 10.8609 139.599 10.9418 139.243 11.0207C139.839 11.3082 140.399 11.7001 140.895 12.1963C141.404 12.7063 141.804 13.2843 142.094 13.8999Z" fill="#FEFEFE"/><path fill-rule="evenodd" clip-rule="evenodd" d="M138.75 10.8101C139.199 10.7021 139.77 10.571 140.37 10.5059C140.808 10.4583 141.281 10.4409 141.733 10.5003C140.367 9.19972 138.54 8.63601 136.777 8.59998C136.334 8.86044 135.916 9.26069 135.543 9.69137C135.239 10.0431 134.974 10.4135 134.754 10.7399C136.043 10.3011 137.461 10.3252 138.75 10.8101Z" fill="#FEFEFE"/><path fill-rule="evenodd" clip-rule="evenodd" d="M131.427 13.6886C131.721 13.1395 132.063 12.5921 132.527 12.1279C133.039 11.6158 133.624 11.2194 134.248 10.9389C134.503 10.5334 134.865 9.99936 135.308 9.48735C135.583 9.169 135.886 8.86398 136.207 8.61353C134.461 8.70487 132.761 9.36524 131.406 10.6379C131.222 11.1756 131.194 11.8169 131.237 12.4364C131.268 12.8802 131.353 13.3124 131.427 13.6886Z" fill="#EF7F1A"/><path fill-rule="evenodd" clip-rule="evenodd" d="M131.205 14.1825C131.097 13.7152 130.971 13.1043 130.926 12.4572C130.895 12.0176 130.9 11.5341 130.974 11.0863C129.652 12.5404 128.995 14.3883 129 16.2442C129.265 16.7243 129.709 17.1723 130.188 17.5681C130.524 17.8464 130.875 18.0938 131.189 18.2987C130.715 16.9783 130.739 15.5144 131.205 14.1825Z" fill="#EF7F1A"/><path fill-rule="evenodd" clip-rule="evenodd" d="M131.387 18.7914C130.986 18.5477 130.472 18.2089 129.988 17.8087C129.635 17.516 129.296 17.1894 129.026 16.841C129.168 18.6368 129.895 20.3919 131.277 21.7754C131.816 21.9478 132.465 21.9541 133.092 21.8861C133.503 21.8414 133.908 21.7633 134.264 21.6843C133.662 21.3962 133.096 21.0018 132.595 20.5016C132.085 19.9914 131.677 19.405 131.387 18.7914Z" fill="#FEFEFE"/><path fill-rule="evenodd" clip-rule="evenodd" d="M134.745 21.8887C134.294 22 133.732 22.1304 133.125 22.1964C132.678 22.2449 132.207 22.2648 131.774 22.2107C133.206 23.4361 134.96 24.0679 136.722 24.1C137.162 23.8393 137.582 23.4385 137.952 23.0109C138.258 22.6566 138.53 22.2839 138.751 21.9556C137.46 22.3986 136.038 22.3737 134.745 21.8887Z" fill="#FEFEFE"/><path d="M127.75 23.27H123.478V14.8531L120.327 23.27H118.423L115.272 14.8531V23.27H111V9.27002H116.901L119.375 15.9866L121.849 9.27002H127.75V23.27Z" fill="#EF7F1A"/><path d="M110.4 23.35H105.519L105.008 21.707H99.8923L99.3809 23.35H94.5L99.7432 9.29999H105.157L110.4 23.35ZM103.857 17.9996L102.45 13.4707L101.043 17.9996H103.857Z" fill="#FEFEFE"/><path fill-rule="evenodd" clip-rule="evenodd" d="M87.9573 23.3H83.7V9.29999H91.2032C92.7909 9.29999 94.031 9.75824 94.9232 10.6747C95.8154 11.5912 96.2615 12.7352 96.2615 14.1066C96.2615 15.4639 95.8154 16.6008 94.9232 17.5173C94.031 18.434 92.7909 18.8921 91.2032 18.8921H87.9573V23.3ZM91.5825 14.9147C91.3437 15.1036 91.0346 15.1979 90.6553 15.1979H87.9573V12.9941H90.6553C91.0346 12.9941 91.3437 13.0885 91.5825 13.2774C91.8214 13.4664 91.9409 13.7427 91.9409 14.1066C91.9409 14.4564 91.8214 14.7258 91.5825 14.9147Z" fill="#FEFEFE"/><path d="M74.1861 23.32H78.4589V12.9773H82.2239V9.27002H70.3999V12.9773H74.1861V23.32Z" fill="#FEFEFE"/><path fill-rule="evenodd" clip-rule="evenodd" d="M58.3999 9.29999H62.6873V13.7234H65.956C67.5549 13.7234 68.8036 14.1834 69.702 15.1032C70.6006 16.0231 71.0499 17.164 71.0499 18.5262C71.0499 19.9024 70.6006 21.0505 69.702 21.9702C68.8036 22.89 67.5549 23.35 65.956 23.35H58.3999V9.29999ZM62.6873 17.4308H65.4041C65.7862 17.4308 66.0974 17.5256 66.338 17.7152C66.5784 17.9047 66.6989 18.1751 66.6989 18.5262C66.6989 18.8912 66.5784 19.1686 66.338 19.3582C66.0974 19.5478 65.7862 19.6426 65.4041 19.6426H62.6873V17.4308Z" fill="#FEFEFE"/><path d="M42 23.35H46.8438L49.8896 13.4707L52.9354 23.35H57.7792L52.5759 9.29999H47.2033L42 23.35Z" fill="#FEFEFE"/><path d="M31.0633 22.2251C32.0502 22.9785 33.3764 23.3 35.0118 23.3C37.4369 23.3 39.5201 22.5778 40.3562 20.4547C41.1924 18.3317 44.75 9.29999 44.75 9.29999H39.9703L38.131 14.9714L35.5297 9.29999H30.75L36.0333 19.1153C35.7371 19.5617 35.2648 19.7849 34.6164 19.7849C34.0241 19.7849 33.4179 19.5757 32.7974 19.1572L31.0633 22.2251Z" fill="#FEFEFE"/><path fill-rule="evenodd" clip-rule="evenodd" d="M29.2946 20.4941C28.258 21.9561 26.4649 23.4946 24.8475 24.4958C30.3872 26.3884 39.7203 26.5589 43.7542 23.4556C39.293 28.4816 29.967 31 22.8723 31C10.2403 31 0 24.0605 0 15.4999C0 6.93946 10.2403 0 22.8723 0C29.9297 0 39.8823 2.97362 43.7108 7.4585C38.8564 4.15773 30.0528 4.94824 24.8565 6.41444C26.5351 7.44969 28.1815 8.8468 29.2111 10.3632C28.8746 10.9115 28.3843 11.9703 28.2024 12.8909C27.3608 10.4682 25.2514 8.07697 22.8662 7.1165C18.7622 8.85069 16.2539 11.8929 16.2539 15.412C16.2539 18.9312 18.7737 22.0558 22.878 23.79C25.137 22.8324 27.2592 20.0664 28.2203 17.7412C28.3648 18.4413 28.7956 19.6761 29.2946 20.4941ZM7.92208 8.35177C11.8945 8.35177 15.1145 11.6194 15.1145 15.5919C15.1145 19.5643 11.8945 22.7843 7.92208 22.7843C3.94972 22.7843 0.729416 19.5643 0.729416 15.5919C0.729416 11.6194 3.94972 8.35177 7.92208 8.35177ZM10.326 24.8193C13.7584 25.6553 17.4709 25.4653 20.8647 24.4861C18.8785 23.2536 17.3069 21.6482 16.3334 19.8107C15.1465 22.2219 12.9693 24.4851 10.326 24.8193ZM10.2829 6.16158C13.9503 5.14827 17.2025 5.35849 20.8766 6.41915C18.8249 7.66873 17.2292 9.34293 16.26 11.243C14.9572 8.75321 13.2667 6.7136 10.2829 6.16158ZM34.6624 27.1825C31.2256 28.3928 27.1747 28.9142 22.8723 28.9142C17.3624 28.9142 12.3559 27.8068 8.40725 25.9036C10.4458 26.6699 12.7771 27.1005 15.2042 27.1005C17.9977 27.1005 20.6163 26.5303 22.8698 25.5343C26.1356 26.778 31.5781 27.8359 34.6624 27.1825ZM34.6856 3.77018C31.247 2.54316 27.134 2.08598 22.8723 2.08598C17.8282 2.08598 12.9561 3.13039 9.17436 4.75231C11.0246 4.14738 13.0629 3.81211 15.2042 3.81211C17.9964 3.81211 20.612 4.42642 22.865 5.42161C27.5949 3.60702 32.4368 3.47601 34.6856 3.77018Z" fill="#EF7F1A"/></svg></a>
           <ul class="nav-links" id="nav-links">
             <li><a href="#product">Оборудование</a></li>
             <li><a href="#economics">Выгода</a></li>
@@ -2070,9 +2201,9 @@
 
           <p class="hero-sub">
             Российские мельничные комплексы с сертификацией
-            <strong>ХАССП</strong>. Нержавеющая сталь AISI304. Изготовление под
-            ключ <strong>от&nbsp;2&nbsp;месяцев</strong>. Замена импортных
-            линий&nbsp;— без компромиссов по качеству.
+            <strong>ХАССП</strong>. Нержавеющая сталь AISI304. Изготовление
+            <strong>от&nbsp;2&nbsp;месяцев</strong>. Воспроизводим результаты
+            европейских линий&nbsp;— при стоимости в&nbsp;5-8 раз ниже.
           </p>
 
           <div class="hero-actions">
@@ -2096,7 +2227,7 @@
               <div class="hero-stat-label">максимальная производительность</div>
             </div>
             <div class="hero-stat">
-              <div class="hero-stat-num">5+ лет</div>
+              <div class="hero-stat-num">10+ лет</div>
               <div class="hero-stat-label">срок службы оборудования</div>
             </div>
           </div>
@@ -2120,7 +2251,7 @@
               <div class="problem-num">01</div>
               <div class="problem-title">Импортное оборудование недоступно</div>
               <p class="problem-desc">
-                Европейские линии Hosokawa, Retsch, IKA — от 3.5 млн €. Санкции,
+                Европейские линии Hosokawa, Retsch, IKA — от 35 млн ₽. Санкции,
                 логистика, запчасти — сроки поставки растягиваются до 12 месяцев
                 и более.
               </p>
@@ -2133,7 +2264,7 @@
                 Срок поставки 8–10 месяцев. Нет сертификации ХАССП. Проблемы с
                 документацией на русском языке и отсутствие сервиса в России.
               </p>
-              <div class="problem-cost">Снижение рекламаций: до 30%</div>
+              <div class="problem-cost">Риск брака: каждая 3-я партия</div>
             </div>
             <div class="problem-card">
               <div class="problem-num">03</div>
@@ -2145,7 +2276,7 @@
                 управления. Невозможно обеспечить стабильный гранулометрический
                 состав.
               </p>
-              <div class="problem-cost">Снижение потерь сырья: до 15%</div>
+              <div class="problem-cost">Потери сырья: до 15% на каждом цикле</div>
             </div>
           </div>
         </div>
@@ -2171,16 +2302,16 @@
             <div class="reveal">
               <div class="label">Решение</div>
               <h2 class="heading">
-                Мельничный комплекс ММУ — <em>российская альтернатива</em>,
-                которая работает
+                Мельничный комплекс ММУ — <em>полный цикл измельчения</em>
+                в одной установке
               </h2>
               <div class="section-divider"></div>
             </div>
             <div class="reveal reveal-d1">
               <p class="body">
                 Роторно-вихревая технология измельчения обеспечивает стабильный
-                результат от 5 до 500 микрон. Полностью изготовлен из
-                нержавеющей стали AISI304 с фторопластовыми футеровками.
+                результат от 5 до 500 микрон. Все контактные поверхности инертны
+                к пищевым продуктам и выдерживают CIP-мойку.
                 Встроенная система из 6 контуров охлаждения сохраняет свойства
                 термочувствительных продуктов.
               </p>
@@ -2213,16 +2344,16 @@
               <div class="spec-name">автоматическое управление</div>
             </div>
             <div class="spec-card">
-              <div class="spec-value">ХАССП</div>
-              <div class="spec-name">сертификация</div>
+              <div class="spec-value">ТР ТС</div>
+              <div class="spec-name">соответствие техрегламенту</div>
             </div>
             <div class="spec-card">
               <div class="spec-value">от 2 мес</div>
               <div class="spec-name">срок изготовления</div>
             </div>
             <div class="spec-card">
-              <div class="spec-value">24/7</div>
-              <div class="spec-name">техподдержка</div>
+              <div class="spec-value">1 чел.</div>
+              <div class="spec-name">для обслуживания</div>
             </div>
           </div>
 
@@ -2245,7 +2376,7 @@
               </div>
               <h3>Роторно-вихревой принцип</h3>
               <p>
-                Запатентованная технология измельчения без нагрева сырья.
+                Запатентованная технология измельчения с контролем температуры.
                 Сохраняет биологическую активность ингредиентов.
               </p>
               <div class="feature-detail">
@@ -2397,8 +2528,8 @@
             </h2>
             <div class="section-divider"></div>
             <p class="subheading">
-              Каждый комплекс ММУ — это инвестиция, которая окупается за 6-14
-              месяцев. Вот реальные цифры по трём ключевым продуктам.
+              Окупаемость — от 6 месяцев. Вот расчёт по трём продуктам
+              с реальной маржой.
             </p>
           </div>
 
@@ -2480,6 +2611,7 @@
             <a href="#form" class="btn-primary"
               >Рассчитать для вашего сырья →</a
             >
+            <p style="margin-top:16px; font-size:13px; color:var(--gray-400);">Верните до 20% стоимости оборудования через федеральную программу поддержки. Поможем с оформлением.</p>
           </div>
         </div>
       </section>
@@ -2552,9 +2684,7 @@
                   <td>Тестовое измельчение</td>
                   <td><span class="cross">✗</span></td>
                   <td><span class="cross">✗</span></td>
-                  <td class="highlight">
-                    <span class="check">✓</span> бесплатно
-                  </td>
+                  <td class="highlight"><span class="check">✓</span> есть</td>
                 </tr>
               </tbody>
             </table>
@@ -2676,7 +2806,7 @@
                 </div>
                 <div class="compare-card-row winner">
                   <span class="label">УльтраМол</span
-                  ><span class="value">✓ бесплатно</span>
+                  ><span class="value">✓ есть</span>
                 </div>
               </div>
             </div>
@@ -2706,7 +2836,7 @@
                 height="600"
               />
               <div class="case-overlay">
-                <div class="case-tag">Рынок: 73 млрд ₽</div>
+                <div class="case-tag">Помол до 50 мкм</div>
                 <h3>Специи и пряности</h3>
                 <p>
                   Перец, корица, куркума, паприка — помол до 50 мкм с
@@ -2723,7 +2853,7 @@
                 height="600"
               />
               <div class="case-overlay">
-                <div class="case-tag">Рынок: 25-40 млрд ₽</div>
+                <div class="case-tag">Температура &lt;30°C</div>
                 <h3>Белковые ингредиенты</h3>
                 <p>
                   Альбумин, казеин, коллаген — сушка и измельчение до пищевого
@@ -2740,7 +2870,7 @@
                 height="600"
               />
               <div class="case-overlay">
-                <div class="case-tag">Рынок: 50 млрд ₽</div>
+                <div class="case-tag">Фракция 5-20 мкм</div>
                 <h3>Пищевые добавки</h3>
                 <p>
                   Силикагель E551, сахарная пудра, крахмалы — точный контроль
@@ -2768,15 +2898,6 @@
           <div class="steps-grid">
             <div class="step-card reveal">
               <div class="step-num">01</div>
-              <h3>Тестовое измельчение</h3>
-              <p>
-                Привозите образец сырья — мы измельчаем на нашем оборудовании и
-                показываем результат. Бесплатно.
-              </p>
-              <span class="step-duration">⏱ 1-3 дня</span>
-            </div>
-            <div class="step-card reveal reveal-d1">
-              <div class="step-num">02</div>
               <h3>Техническое задание</h3>
               <p>
                 Согласуем параметры: производительность, фракция, материал,
@@ -2784,9 +2905,18 @@
               </p>
               <span class="step-duration">⏱ 3-5 дней</span>
             </div>
+            <div class="step-card reveal reveal-d1">
+              <div class="step-num">02</div>
+              <h3>Тестовое измельчение</h3>
+              <p>
+                Привозите 5 кг вашего сырья — бесплатно измельчим и выдадим
+                протокол с гранулометрическим анализом и рекомендациями.
+              </p>
+              <span class="step-duration">⏱ 1-3 дня</span>
+            </div>
             <div class="step-card reveal reveal-d2">
               <div class="step-num">03</div>
-              <h3>Производство</h3>
+              <h3>Изготовление комплекса</h3>
               <p>
                 Изготовление комплекса на собственном производстве. Контроль
                 качества на каждом этапе.
@@ -2828,7 +2958,7 @@
                 height="960"
               />
               <div class="about-badge">
-                <div class="about-badge-num">14+</div>
+                <div class="about-badge-num">14</div>
                 <div class="about-badge-text">лет на рынке</div>
               </div>
             </div>
@@ -2882,37 +3012,29 @@
         <div class="container">
           <div class="section-header reveal">
             <div class="label">Клиенты</div>
-            <h2 class="heading">Нам <em class="em-orange">доверяют</em></h2>
+            <h2 class="heading">50+ производств уже работают на <em class="em-orange">ММУ</em></h2>
             <div class="section-divider"></div>
           </div>
+        </div>
 
-          <div class="trust-logos reveal reveal-d1">
-            <div class="trust-logo">
-              <div class="trust-logo-icon">АФ</div>
-              <div class="trust-logo-name">Амарант-Фудс<br />г. Курск</div>
-            </div>
-            <div class="trust-logo">
-              <div class="trust-logo-icon">КВ</div>
-              <div class="trust-logo-name">Коллаб Ворлд<br />г. Москва</div>
-            </div>
-            <div class="trust-logo">
-              <div class="trust-logo-icon">РП</div>
-              <div class="trust-logo-name">РусПротеин<br />г. Воронеж</div>
-            </div>
-            <div class="trust-logo">
-              <div class="trust-logo-icon">СТ</div>
-              <div class="trust-logo-name">СпецТрейд<br />г. Краснодар</div>
-            </div>
-            <div class="trust-logo">
-              <div class="trust-logo-icon">ФИ</div>
-              <div class="trust-logo-name">
-                ФудИнгредиент<br />г. Новосибирск
-              </div>
-            </div>
-            <div class="trust-logo">
-              <div class="trust-logo-icon">БХ</div>
-              <div class="trust-logo-name">БиоХим<br />г. Казань</div>
-            </div>
+        <div class="trust-carousel reveal reveal-d1">
+          <div class="trust-track" id="trust-track">
+            <div class="trust-item"><div class="trust-item-icon">ГН</div><div><div class="trust-item-name">Газпромнефть</div><div class="trust-item-desc">Нефтехимия</div></div></div>
+            <div class="trust-item"><div class="trust-item-icon">СБ</div><div><div class="trust-item-name">СИБУР</div><div class="trust-item-desc">Москва</div></div></div>
+            <div class="trust-item"><div class="trust-item-icon">БРТ</div><div><div class="trust-item-name">Балаковорезинотехника</div><div class="trust-item-desc">Балаково</div></div></div>
+            <div class="trust-item"><div class="trust-item-icon">ТЗ</div><div><div class="trust-item-name">Тульский завод РТИ</div><div class="trust-item-desc">Тула</div></div></div>
+            <div class="trust-item"><div class="trust-item-icon">К</div><div><div class="trust-item-name">Композит</div><div class="trust-item-desc">Курск</div></div></div>
+            <div class="trust-item"><div class="trust-item-icon">АФ</div><div><div class="trust-item-name">Амарант Фудс</div><div class="trust-item-desc">Пищевая промышленность</div></div></div>
+            <div class="trust-item"><div class="trust-item-icon">КВ</div><div><div class="trust-item-name">Коллаб Ворлд</div><div class="trust-item-desc">Натуральная косметика</div></div></div>
+            <div class="trust-item"><div class="trust-item-icon">RV</div><div><div class="trust-item-name">ROSSVIK</div><div class="trust-item-desc">Астрахань</div></div></div>
+            <div class="trust-item"><div class="trust-item-icon">М</div><div><div class="trust-item-name">ПКФ МИТО</div><div class="trust-item-desc">Киров</div></div></div>
+            <div class="trust-item"><div class="trust-item-icon">Л</div><div><div class="trust-item-name">Лега</div><div class="trust-item-desc">Дзержинск</div></div></div>
+            <div class="trust-item"><div class="trust-item-icon">ЗГМ</div><div><div class="trust-item-name">ЗГМ</div><div class="trust-item-desc">Дзержинск</div></div></div>
+            <div class="trust-item"><div class="trust-item-icon">ТР</div><div><div class="trust-item-name">ТЗРО</div><div class="trust-item-desc">Томск</div></div></div>
+            <div class="trust-item"><div class="trust-item-icon">ЛП</div><div><div class="trust-item-name">Лейпурин</div><div class="trust-item-desc">Санкт-Петербург</div></div></div>
+            <div class="trust-item"><div class="trust-item-icon">ГГ</div><div><div class="trust-item-name">Гипс Групп</div><div class="trust-item-desc">Санкт-Петербург</div></div></div>
+            <div class="trust-item"><div class="trust-item-icon">СМ</div><div><div class="trust-item-name">Сомэкс</div><div class="trust-item-desc">Коломна</div></div></div>
+            <div class="trust-item"><div class="trust-item-icon">БК</div><div><div class="trust-item-name">Биокол</div><div class="trust-item-desc">Пищевая промышленность, СПб</div></div></div>
           </div>
         </div>
       </section>
@@ -2948,7 +3070,7 @@
                 </div>
                 <div class="cta-benefit">
                   <span class="check-icon">✓</span>
-                  <span>Индивидуальный подбор конфигурации под ваше сырьё</span>
+                  <span>Подбор ротора, сит и режима под ваше конкретное сырьё</span>
                 </div>
               </div>
             </div>
@@ -3016,7 +3138,7 @@
                 </button>
                 <p class="form-note">
                   Нажимая кнопку, вы соглашаетесь с
-                  <a href="#privacy">политикой конфиденциальности</a>
+                  <a href="#" onclick="document.getElementById('privacy-modal').classList.add('active');return false;">политикой конфиденциальности</a>
                 </p>
               </form>
             </div>
@@ -3024,36 +3146,24 @@
         </div>
       </section>
 
-      <!-- ═══════════ PRIVACY ═══════════ -->
-      <section class="privacy" id="privacy">
-        <div class="container">
+      <!-- ═══════════ PRIVACY MODAL ═══════════ -->
+      <div class="modal-overlay" id="privacy-modal">
+        <div class="modal-content">
+          <button class="modal-close" aria-label="Закрыть">&times;</button>
           <h2>Политика конфиденциальности</h2>
-          <p>
-            ООО «УльтраМол» (далее — Оператор) обрабатывает персональные данные
-            в соответствии с Федеральным законом от 27.07.2006 N 152-ФЗ «О
-            персональных данных».
-          </p>
-          <p>
-            Заполняя форму на сайте, вы даёте согласие на обработку следующих
-            данных:
-          </p>
+          <p>ООО «УльтраМол» (далее — Оператор) обрабатывает персональные данные в соответствии с Федеральным законом от 27.07.2006 N 152-ФЗ «О персональных данных».</p>
+          <p>Заполняя форму на сайте, вы даёте согласие на обработку следующих данных:</p>
           <ul>
             <li>Имя</li>
             <li>Название компании</li>
             <li>Номер телефона</li>
+            <li>Адрес электронной почты</li>
             <li>Описание задачи (свободное текстовое поле)</li>
           </ul>
-          <p>
-            Цель обработки — связь с вами для подготовки коммерческого
-            предложения. Данные не передаются третьим лицам, хранятся на
-            серверах в РФ и удаляются по вашему запросу.
-          </p>
-          <p>
-            Для отзыва согласия или удаления данных напишите на
-            <a href="mailto:info@ultramol.ru">info@ultramol.ru</a>.
-          </p>
+          <p>Цель обработки — связь с вами для подготовки коммерческого предложения. Данные не передаются третьим лицам, хранятся на серверах в РФ и удаляются по вашему запросу.</p>
+          <p>Для отзыва согласия или удаления данных напишите на <a href="mailto:info@ultramol.ru">info@ultramol.ru</a>.</p>
         </div>
-      </section>
+      </div>
     </main>
 
     <!-- ═══════════ FOOTER ═══════════ -->
@@ -3178,7 +3288,7 @@
         >
           <span>&copy; 2012–2026 УльтраМол. Все права защищены.</span>
           <a
-            href="#privacy"
+            href="#" onclick="document.getElementById('privacy-modal').classList.add('active');return false;"
             style="color: var(--gray-500); text-decoration: none"
             >Политика конфиденциальности</a
           >
@@ -3188,6 +3298,26 @@
 
     <!-- ═══════════ SCRIPTS ═══════════ -->
     <script>
+      // Privacy modal
+      const privacyModal = document.getElementById('privacy-modal');
+      if (privacyModal) {
+        privacyModal.querySelector('.modal-close').addEventListener('click', () => {
+          privacyModal.classList.remove('active');
+        });
+        privacyModal.addEventListener('click', (e) => {
+          if (e.target === privacyModal) privacyModal.classList.remove('active');
+        });
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape') privacyModal.classList.remove('active');
+        });
+      }
+
+      // Client carousel — duplicate items for infinite scroll
+      const trustTrack = document.getElementById('trust-track');
+      if (trustTrack) {
+        trustTrack.innerHTML += trustTrack.innerHTML;
+      }
+
       // Feature accordion
       document.querySelectorAll(".feature-item").forEach((item) => {
         item.addEventListener("click", () => {
