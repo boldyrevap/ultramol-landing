@@ -2438,10 +2438,8 @@
           </h1>
 
           <p class="hero-sub">
-            Российские мельничные комплексы с сертификацией
-            <strong>ХАССП</strong>. Нержавеющая сталь AISI304. Изготовление
-            <strong>от&nbsp;2&nbsp;месяцев</strong>. Воспроизводим результаты
-            европейских линий&nbsp;— при стоимости в&nbsp;5-8 раз ниже.
+            Воспроизводим результаты <strong>европейских линий</strong>&nbsp;—
+            при стоимости в&nbsp;<strong>5-8 раз ниже</strong>.
           </p>
 
           <div class="hero-actions">
@@ -2540,8 +2538,8 @@
 
           <div class="product-intro">
             <div class="reveal">
-              <div class="label">Решение</div>
-              <h2 class="heading">
+              <div class="label" style="margin-bottom:16px;">Решение</div>
+              <h2 class="heading" style="margin-bottom:20px;">
                 Мельничный комплекс ММУ — <em>полный цикл измельчения</em>
                 в одной установке
               </h2>
@@ -3152,7 +3150,7 @@
               <div class="step-num">02</div>
               <h3>Тестовое измельчение</h3>
               <p>
-                Привозите 5 кг вашего сырья — измельчим и выдадим протокол с
+                Организуем тестирование на вашем сырье — выдадим протокол с
                 гранулометрическим анализом и рекомендациями.
               </p>
               <span class="step-duration">⏱ 1-3 дня</span>
@@ -3422,8 +3420,7 @@
               </h2>
               <div class="section-divider"></div>
               <p class="subheading">
-                Привезите образец вашего сырья — мы покажем результат на нашем
-                оборудовании.
+                Организуем тестирование — покажем результат на нашем оборудовании.
               </p>
 
               <div class="cta-benefits">
@@ -3482,7 +3479,8 @@
                     type="tel"
                     id="phone"
                     name="phone"
-                    placeholder="+7 (___) ___-__-__"
+                    value="+7 "
+                    inputmode="tel"
                     required
                     aria-required="true"
                     autocomplete="tel"
@@ -3815,6 +3813,27 @@
       }
 
       // Trust grid — static, no JS needed
+
+      // Phone field — keep "+7 " prefix
+      const phoneInput = document.getElementById('phone');
+      if (phoneInput) {
+        const ensurePrefix = () => {
+          if (!phoneInput.value.startsWith('+7')) {
+            phoneInput.value = '+7 ' + phoneInput.value.replace(/^\+?7?\s*/, '');
+          }
+        };
+        phoneInput.addEventListener('focus', () => {
+          if (!phoneInput.value) phoneInput.value = '+7 ';
+        });
+        phoneInput.addEventListener('input', ensurePrefix);
+        phoneInput.addEventListener('keydown', (e) => {
+          // Prevent deleting the "+7 " prefix
+          if ((e.key === 'Backspace' || e.key === 'Delete') &&
+              phoneInput.selectionStart <= 3 && phoneInput.selectionEnd <= 3) {
+            e.preventDefault();
+          }
+        });
+      }
 
       // Feature accordion
       document.querySelectorAll(".feature-item").forEach((item) => {
