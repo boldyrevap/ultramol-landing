@@ -251,11 +251,15 @@
         // Заменить на реальный ID счётчика перед запуском
         const YM_COUNTER_ID = null;
 
+        // Если Метрика не подключена — баннер не нужен (нет cookies, нет
+        // обработки). Покажем его автоматически, как только YM_COUNTER_ID
+        // получит значение.
+        if (!YM_COUNTER_ID) {
+          banner.remove();
+          return;
+        }
+
         function initMetrica() {
-          if (!YM_COUNTER_ID) {
-            // Счётчик ещё не подключён — выходим; заглушка сохраняет сценарий.
-            return;
-          }
           if (window.ym) return;
           (function (m, e, t, r, i, k, a) {
             m[i] =
