@@ -1295,15 +1295,23 @@
                     placeholder="Расскажите, какое сырьё и какой результат хотите получить"
                   ></textarea>
                 </div>
+                <label class="form-consent">
+                  <input
+                    type="checkbox"
+                    id="consent"
+                    name="consent"
+                    required
+                    aria-required="true"
+                  />
+                  <span class="form-consent-text">
+                    Я согласен с
+                    <a href="#" data-open-privacy>политикой конфиденциальности</a>
+                    и даю согласие на обработку персональных данных
+                  </span>
+                </label>
                 <button type="submit" class="form-submit">
                   Отправить заявку →
                 </button>
-                <p class="form-note">
-                  Нажимая кнопку, вы соглашаетесь с
-                  <a href="#" data-open-privacy
-                    >политикой конфиденциальности</a
-                  >
-                </p>
               </form>
             </div>
           </div>
@@ -1338,13 +1346,33 @@
             <li>Описание задачи (свободное текстовое поле)</li>
           </ul>
           <p>
-            Цель обработки — связь с вами для подготовки коммерческого
-            предложения. Данные не передаются третьим лицам, хранятся на
-            серверах в РФ и удаляются по вашему запросу.
+            <strong>Цель обработки:</strong> связь с вами для подготовки
+            коммерческого предложения.
           </p>
           <p>
-            Для отзыва согласия или удаления данных напишите на
-            <a href="mailto:info@ultramol.ru">info@ultramol.ru</a>.
+            <strong>Правовое основание:</strong> согласие субъекта персональных
+            данных (п. 1 ч. 1 ст. 6 Федерального закона № 152-ФЗ).
+          </p>
+          <p>
+            <strong>Срок хранения:</strong> 3 года с момента получения или до
+            отзыва согласия — в зависимости от того, что наступит раньше.
+          </p>
+          <p>
+            <strong>Способ обработки:</strong> обработка осуществляется
+            сотрудниками ООО «УльтраМол» на серверах в РФ без передачи третьим
+            лицам.
+          </p>
+          <p>
+            <strong>Cookies и аналитика:</strong> для улучшения сайта
+            используется сервис Яндекс.Метрика, который устанавливает cookies и
+            обрабатывает обезличенные данные о поведении пользователей. Сбор
+            данных происходит только после вашего согласия через баннер
+            cookie-уведомления.
+          </p>
+          <p>
+            <strong>Отзыв согласия и удаление данных:</strong> напишите на
+            <a href="mailto:info@ultramol.ru">info@ultramol.ru</a> — запрос
+            обрабатывается в течение 10 рабочих дней.
           </p>
         </div>
       </div>
@@ -1576,6 +1604,27 @@
         </div>
       </div>
     </footer>
+
+    <!-- ═══════════ COOKIE CONSENT (152-FZ gate для Яндекс.Метрики) ═══════════ -->
+    <div
+      id="cookie-banner"
+      class="cookie-banner"
+      role="region"
+      aria-label="Согласие на использование файлов cookie"
+      hidden
+    >
+      <div class="cookie-banner-inner">
+        <p class="cookie-banner-text">
+          Мы используем cookies и веб-аналитику (Яндекс.Метрика) для улучшения
+          сайта. Подробнее — в
+          <a href="#" data-open-privacy>политике конфиденциальности</a>.
+        </p>
+        <div class="cookie-banner-actions">
+          <button type="button" class="cookie-btn cookie-btn-decline" id="cookie-decline">Отклонить</button>
+          <button type="button" class="cookie-btn cookie-btn-accept" id="cookie-accept">Принять</button>
+        </div>
+      </div>
+    </div>
 
   </body>
 </html>
