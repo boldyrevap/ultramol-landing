@@ -56,7 +56,7 @@
     <link
       rel="preload"
       as="image"
-      href="assets/images/hero.webp"
+      href="assets/videos/hero-poster.webp"
       type="image/webp"
       fetchpriority="high"
     />
@@ -218,17 +218,30 @@
     <main id="main">
       <!-- ═══════════ HERO ═══════════ -->
       <section class="hero" id="hero">
-        <div class="hero-bg"></div>
+        <div class="hero-bg">
+          <video
+            class="hero-video"
+            autoplay
+            muted
+            playsinline
+            preload="metadata"
+            poster="assets/videos/hero-poster.webp"
+            aria-hidden="true"
+          >
+            <source src="assets/videos/hero.webm" type="video/webm" />
+            <source src="assets/videos/hero.mp4" type="video/mp4" />
+          </video>
+        </div>
         <div class="container hero-content">
           <h1>
-            Измельчительное<br />оборудование для<br /><em
-              >пищевых ингредиентов</em
-            >
+            Тонкий помол<br /><em>пищевых ингредиентов</em><br />от 5 мкм
           </h1>
 
           <p class="hero-sub">
-            Воспроизводим результаты <strong>европейских линий</strong>&nbsp;—
-            при стоимости в&nbsp;<strong>5-8 раз ниже</strong>.
+            Полный цикл в&nbsp;одной установке. Воспроизводим результаты
+            <strong>европейских линий</strong>&nbsp;— при стоимости в&nbsp;<strong
+              >5-8 раз ниже</strong
+            >.
           </p>
 
           <div class="hero-actions">
