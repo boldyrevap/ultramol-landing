@@ -1627,14 +1627,16 @@
    FEDERAL SUBSIDY CALLOUT
    ═══════════════════════════════════════ */
       .subsidy-callout {
-        margin-top: 16px;
-        padding: 16px 24px;
+        margin-top: 24px;
+        padding: 20px 32px;
         border: 1px solid var(--orange-border);
         border-radius: 2px;
         background: var(--orange-surface);
-        font-size: 13px;
-        color: var(--gray-300);
+        font-size: 16px;
+        line-height: 1.55;
+        color: var(--white);
         text-align: center;
+        font-weight: 500;
       }
 
       /* ═══════════════════════════════════════
