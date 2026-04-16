@@ -767,6 +767,11 @@
         margin-bottom: 8px;
       }
 
+      .spec-value-compact {
+        font-size: clamp(16px, 1.8vw, 20px);
+        letter-spacing: -0.02em;
+      }
+
       .spec-name {
         font-size: 12px;
         font-weight: 500;
