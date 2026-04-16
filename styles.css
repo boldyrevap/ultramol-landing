@@ -325,7 +325,9 @@
         position: absolute;
         inset: 0;
         overflow: hidden;
-        background: var(--black);
+        background: url("assets/images/hero.webp") center/cover no-repeat
+          var(--black);
+        filter: brightness(0.4) contrast(1.05);
       }
 
       .hero-video {
