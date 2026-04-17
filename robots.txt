@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.ultramol.ru/sitemap.xml
+Sitemap: https://pomol.ultramol.ru/sitemap.xml
