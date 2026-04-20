@@ -26,7 +26,8 @@ jobs:
           SOURCE: "./"
           TARGET: ${{ secrets.BEGET_PATH }}
           EXCLUDE: "/.git/, /.github/, /.gitignore, /.DS_Store, *.md, /.vscode/, /.claude/"
-          # --omit-dir-times: target root is owned by root, cannot chtime
+          # target root is owned by root on Beget — can't chmod/chtime/chown it.
+          # Use minimal flags: recursive, symlinks, verbose, gzip. Skip perms/times/owner.
           # SAFETY: no --delete yet. After a clean green deploy, switch to:
-          # ARGS: "-avz --omit-dir-times --delete"
-          ARGS: "-avz --omit-dir-times"
+          # ARGS: "-rlvz --omit-dir-times --no-perms --delete"
+          ARGS: "-rlvz --omit-dir-times --no-perms"
