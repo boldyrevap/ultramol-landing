@@ -179,6 +179,51 @@
         }, 1500);
       })();
 
+      // Захват UTM и yclid/gclid при первом заходе, хранение в sessionStorage.
+      // Источник правды: первый переход с метками. Повторные заходы без меток
+      // не перетирают зафиксированный источник.
+      const UTM_STORAGE_KEY = "ultramol_attribution";
+      const UTM_FIELDS = [
+        "utm_source",
+        "utm_medium",
+        "utm_campaign",
+        "utm_term",
+        "utm_content",
+        "yclid",
+        "gclid",
+      ];
+
+      function captureAttribution() {
+        const params = new URLSearchParams(location.search);
+        const fromUrl = {};
+        let hasAny = false;
+        UTM_FIELDS.forEach((k) => {
+          const v = params.get(k);
+          if (v) {
+            fromUrl[k] = v;
+            hasAny = true;
+          }
+        });
+
+        let stored = null;
+        try {
+          stored = JSON.parse(sessionStorage.getItem(UTM_STORAGE_KEY) || "null");
+        } catch (_) {}
+
+        if (hasAny && !stored) {
+          fromUrl.first_referrer = document.referrer || "";
+          fromUrl.first_landing = location.href;
+          fromUrl.first_visit_at = new Date().toISOString();
+          try {
+            sessionStorage.setItem(UTM_STORAGE_KEY, JSON.stringify(fromUrl));
+          } catch (_) {}
+          return fromUrl;
+        }
+        return stored || fromUrl;
+      }
+
+      const attribution = captureAttribution();
+
       // Form handler — submits to Google Apps Script Web App
       // Paste the /exec URL from Apps Script deploy here:
       const FORM_ENDPOINT = "https://script.google.com/macros/s/AKfycbxysyPZGhJVOL_iV9of1tgDoNLgLhCmy9NBrIQhZw6jVDa07rs6F1uNe29KDM2BRLsvWg/exec";
@@ -261,6 +306,16 @@
             page: location.href,
             referrer: document.referrer || "",
             userAgent: navigator.userAgent,
+            utm_source: attribution.utm_source || "",
+            utm_medium: attribution.utm_medium || "",
+            utm_campaign: attribution.utm_campaign || "",
+            utm_term: attribution.utm_term || "",
+            utm_content: attribution.utm_content || "",
+            yclid: attribution.yclid || "",
+            gclid: attribution.gclid || "",
+            first_referrer: attribution.first_referrer || "",
+            first_landing: attribution.first_landing || "",
+            first_visit_at: attribution.first_visit_at || "",
           };
 
           if (submitBtn) {
