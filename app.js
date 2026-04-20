@@ -325,20 +325,29 @@
 
           try {
             // Apps Script сохраняет POST ДО 302-редиректа на
-            // script.googleusercontent.com/echo. Сам редирект у части клиентов
-            // падает (ERR_SOCKET_NOT_CONNECTED) — блокируется
-            // расширениями/антивирусами или нестабилен в Yandex Browser.
-            // redirect:"manual" возвращает opaqueredirect сразу по получению
-            // 302, не ходит на googleusercontent.com. no-cors + text/plain
-            // избавляют от preflight. Почта + Sheets — источник правды.
-            await fetch(FORM_ENDPOINT, {
-              method: "POST",
-              mode: "no-cors",
-              redirect: "manual",
-              headers: { "Content-Type": "text/plain;charset=utf-8" },
-              body: JSON.stringify(payload),
-              keepalive: true,
-            });
+            // script.googleusercontent.com/echo. sendBeacon — самый
+            // устойчивый путь: без preflight, без CORS, без конфликта
+            // no-cors+redirect, который Chromium теперь блокирует.
+            // Fallback — fetch с redirect:"follow".
+            // Почта + Sheets — источник правды.
+            const bodyStr = JSON.stringify(payload);
+            let sent = false;
+            if (typeof navigator.sendBeacon === "function") {
+              const blob = new Blob([bodyStr], {
+                type: "text/plain;charset=utf-8",
+              });
+              sent = navigator.sendBeacon(FORM_ENDPOINT, blob);
+            }
+            if (!sent) {
+              await fetch(FORM_ENDPOINT, {
+                method: "POST",
+                mode: "no-cors",
+                redirect: "follow",
+                headers: { "Content-Type": "text/plain;charset=utf-8" },
+                body: bodyStr,
+                keepalive: true,
+              });
+            }
             if (typeof window.__umTrackGoal === "function") {
               window.__umTrackGoal("form_submit");
             }
