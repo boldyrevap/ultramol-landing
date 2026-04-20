@@ -179,23 +179,32 @@
         }, 1500);
       })();
 
-      // Form handler — DOM API (CSP-safe) + phone validation
+      // Form handler — submits to Google Apps Script Web App
+      // Paste the /exec URL from Apps Script deploy here:
+      const FORM_ENDPOINT = "https://script.google.com/macros/s/AKfycbxysyPZGhJVOL_iV9of1tgDoNLgLhCmy9NBrIQhZw6jVDa07rs6F1uNe29KDM2BRLsvWg/exec";
+
       const contactForm = document.getElementById("contact-form");
       if (contactForm) {
-        contactForm.addEventListener("submit", (e) => {
-          e.preventDefault();
-          const phone = contactForm.querySelector("#phone");
-          // Require at least 11 digits for a Russian number (+7 + 10 digits)
-          if (phone) {
-            const digits = phone.value.replace(/\D/g, "");
-            if (digits.length < 11) {
-              phone.setCustomValidity("Введите полный номер телефона");
-              phone.reportValidity();
-              return;
-            }
-            phone.setCustomValidity("");
-          }
+        const submitBtn = contactForm.querySelector(".form-submit");
+        const originalBtnText = submitBtn ? submitBtn.textContent : "";
 
+        const setError = (msg) => {
+          let err = contactForm.querySelector(".form-error");
+          if (!err) {
+            err = document.createElement("div");
+            err.className = "form-error";
+            err.setAttribute("role", "alert");
+            contactForm.insertBefore(err, submitBtn);
+          }
+          err.textContent = msg;
+        };
+
+        const clearError = () => {
+          const err = contactForm.querySelector(".form-error");
+          if (err) err.remove();
+        };
+
+        const showSuccess = () => {
           const card = contactForm.closest(".form-card");
           contactForm.style.display = "none";
 
@@ -226,6 +235,60 @@
 
           success.append(icon, heading, body, resetBtn);
           card.appendChild(success);
+        };
+
+        contactForm.addEventListener("submit", async (e) => {
+          e.preventDefault();
+          clearError();
+
+          const phone = contactForm.querySelector("#phone");
+          if (phone) {
+            const digits = phone.value.replace(/\D/g, "");
+            if (digits.length < 11) {
+              phone.setCustomValidity("Введите полный номер телефона");
+              phone.reportValidity();
+              return;
+            }
+            phone.setCustomValidity("");
+          }
+
+          const payload = {
+            name: contactForm.name.value.trim(),
+            company: contactForm.company.value.trim(),
+            phone: contactForm.phone.value.trim(),
+            email: contactForm.email.value.trim(),
+            material: contactForm.material.value.trim(),
+            page: location.href,
+            referrer: document.referrer || "",
+            userAgent: navigator.userAgent,
+          };
+
+          if (submitBtn) {
+            submitBtn.disabled = true;
+            submitBtn.textContent = "Отправка…";
+          }
+
+          try {
+            // text/plain avoids CORS preflight — Apps Script parses JSON from body
+            const res = await fetch(FORM_ENDPOINT, {
+              method: "POST",
+              mode: "cors",
+              headers: { "Content-Type": "text/plain;charset=utf-8" },
+              body: JSON.stringify(payload),
+            });
+            if (!res.ok) throw new Error("HTTP " + res.status);
+            const data = await res.json().catch(() => ({ ok: true }));
+            if (data && data.ok === false) throw new Error(data.error || "fail");
+            showSuccess();
+          } catch (err) {
+            setError(
+              "Не удалось отправить. Проверьте соединение или позвоните нам — контакты в шапке."
+            );
+            if (submitBtn) {
+              submitBtn.disabled = false;
+              submitBtn.textContent = originalBtnText;
+            }
+          }
         });
       }
 

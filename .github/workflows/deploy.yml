@@ -1,0 +1,31 @@
+name: Deploy to Beget
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch: {}
+
+concurrency:
+  group: deploy-landing
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Deploy via rsync over SSH
+        uses: easingthemes/ssh-deploy@v5.1.0
+        with:
+          SSH_PRIVATE_KEY: ${{ secrets.BEGET_SSH_KEY }}
+          REMOTE_HOST: ${{ secrets.BEGET_HOST }}
+          REMOTE_USER: ${{ secrets.BEGET_USER }}
+          REMOTE_PORT: "22"
+          SOURCE: "./"
+          TARGET: ${{ secrets.BEGET_PATH }}
+          EXCLUDE: "/.git/, /.github/, /.gitignore, /.DS_Store, *.md, /.vscode/"
+          # SAFETY: no --delete yet. Verify first few deploys, then switch to:
+          # ARGS: "-avz --delete"
+          ARGS: "-avz"
