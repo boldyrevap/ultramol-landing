@@ -269,16 +269,21 @@
           }
 
           try {
-            // text/plain avoids CORS preflight — Apps Script parses JSON from body
-            const res = await fetch(FORM_ENDPOINT, {
+            // Apps Script сохраняет POST ДО 302-редиректа на
+            // script.googleusercontent.com/echo. Сам редирект у части клиентов
+            // падает (ERR_SOCKET_NOT_CONNECTED) — блокируется
+            // расширениями/антивирусами или нестабилен в Yandex Browser.
+            // redirect:"manual" возвращает opaqueredirect сразу по получению
+            // 302, не ходит на googleusercontent.com. no-cors + text/plain
+            // избавляют от preflight. Почта + Sheets — источник правды.
+            await fetch(FORM_ENDPOINT, {
               method: "POST",
-              mode: "cors",
+              mode: "no-cors",
+              redirect: "manual",
               headers: { "Content-Type": "text/plain;charset=utf-8" },
               body: JSON.stringify(payload),
+              keepalive: true,
             });
-            if (!res.ok) throw new Error("HTTP " + res.status);
-            const data = await res.json().catch(() => ({ ok: true }));
-            if (data && data.ok === false) throw new Error(data.error || "fail");
             showSuccess();
           } catch (err) {
             setError(
