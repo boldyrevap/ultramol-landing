@@ -25,7 +25,8 @@ jobs:
           REMOTE_PORT: "22"
           SOURCE: "./"
           TARGET: ${{ secrets.BEGET_PATH }}
-          EXCLUDE: "/.git/, /.github/, /.gitignore, /.DS_Store, *.md, /.vscode/"
-          # SAFETY: no --delete yet. Verify first few deploys, then switch to:
-          # ARGS: "-avz --delete"
-          ARGS: "-avz"
+          EXCLUDE: "/.git/, /.github/, /.gitignore, /.DS_Store, *.md, /.vscode/, /.claude/"
+          # --omit-dir-times: target root is owned by root, cannot chtime
+          # SAFETY: no --delete yet. After a clean green deploy, switch to:
+          # ARGS: "-avz --omit-dir-times --delete"
+          ARGS: "-avz --omit-dir-times"
