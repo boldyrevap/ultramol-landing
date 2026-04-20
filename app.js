@@ -284,6 +284,9 @@
               body: JSON.stringify(payload),
               keepalive: true,
             });
+            if (typeof window.__umTrackGoal === "function") {
+              window.__umTrackGoal("form_submit");
+            }
             showSuccess();
           } catch (err) {
             setError(
@@ -296,6 +299,19 @@
           }
         });
       }
+
+      // Phone & email click tracking (Метрика цели)
+      document.addEventListener("click", (e) => {
+        const a = e.target.closest && e.target.closest("a[href]");
+        if (!a) return;
+        const href = a.getAttribute("href") || "";
+        if (typeof window.__umTrackGoal !== "function") return;
+        if (href.startsWith("tel:")) {
+          window.__umTrackGoal("phone_click");
+        } else if (href.startsWith("mailto:")) {
+          window.__umTrackGoal("email_click");
+        }
+      });
 
       // Smooth scroll
       document.querySelectorAll('a[href^="#"]').forEach((a) => {
@@ -316,8 +332,7 @@
         const banner = document.getElementById("cookie-banner");
         if (!banner) return;
 
-        // Заменить на реальный ID счётчика перед запуском
-        const YM_COUNTER_ID = null;
+        const YM_COUNTER_ID = 108687631;
 
         // Если Метрика не подключена — баннер не нужен (нет cookies, нет
         // обработки). Покажем его автоматически, как только YM_COUNTER_ID
@@ -356,8 +371,14 @@
             trackLinks: true,
             accurateTrackBounce: true,
             webvisor: true,
+            ecommerce: "dataLayer",
           });
         }
+
+        function trackGoal(name, params) {
+          if (window.ym) window.ym(YM_COUNTER_ID, "reachGoal", name, params);
+        }
+        window.__umTrackGoal = trackGoal;
 
         function hideBanner() {
           banner.hidden = true;
