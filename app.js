@@ -276,6 +276,10 @@
             contactForm.reset();
             const ph = contactForm.querySelector("#phone");
             if (ph) ph.value = "+7 ";
+            if (submitBtn) {
+              submitBtn.disabled = false;
+              submitBtn.textContent = originalBtnText;
+            }
           });
 
           success.append(icon, heading, body, resetBtn);
