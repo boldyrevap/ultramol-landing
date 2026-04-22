@@ -249,7 +249,15 @@
           if (err) err.remove();
         };
 
+        const resetSubmitBtn = () => {
+          if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.textContent = originalBtnText;
+          }
+        };
+
         const showSuccess = () => {
+          resetSubmitBtn();
           const card = contactForm.closest(".form-card");
           contactForm.style.display = "none";
 
@@ -276,10 +284,7 @@
             contactForm.reset();
             const ph = contactForm.querySelector("#phone");
             if (ph) ph.value = "+7 ";
-            if (submitBtn) {
-              submitBtn.disabled = false;
-              submitBtn.textContent = originalBtnText;
-            }
+            resetSubmitBtn();
           });
 
           success.append(icon, heading, body, resetBtn);
@@ -352,6 +357,14 @@
                 keepalive: true,
               });
             }
+            // Чекбокс согласия обязательный — если форма валидна, он
+            // отмечен. Повышаем это до согласия на аналитику, чтобы Метрика
+            // зафиксировала лида (иначе ym не загружен — цель теряется).
+            const consent = contactForm.querySelector("#consent");
+            if (consent && consent.checked &&
+                typeof window.__umGrantConsentFromForm === "function") {
+              window.__umGrantConsentFromForm();
+            }
             if (typeof window.__umTrackGoal === "function") {
               window.__umTrackGoal("form_submit");
             }
@@ -360,10 +373,7 @@
             setError(
               "Не удалось отправить. Проверьте соединение или позвоните нам — контакты в шапке."
             );
-            if (submitBtn) {
-              submitBtn.disabled = false;
-              submitBtn.textContent = originalBtnText;
-            }
+            resetSubmitBtn();
           }
         });
       }
@@ -447,6 +457,19 @@
           if (window.ym) window.ym(YM_COUNTER_ID, "reachGoal", name, params);
         }
         window.__umTrackGoal = trackGoal;
+
+        // Если пользователь не отвечал на cookie-баннер, но отправил форму
+        // с отмеченным чекбоксом согласия на обработку ПД — трактуем это как
+        // согласие и на аналитику: грузим Метрику, чтобы цель form_submit
+        // долетела. Явный «Отклонить» на баннере уважаем: не переопределяем.
+        window.__umGrantConsentFromForm = function () {
+          let current = null;
+          try { current = localStorage.getItem(STORAGE_KEY); } catch (_) {}
+          if (current === "declined") return;
+          try { localStorage.setItem(STORAGE_KEY, "accepted"); } catch (_) {}
+          hideBanner();
+          initMetrica();
+        };
 
         function hideBanner() {
           banner.hidden = true;
