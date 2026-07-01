@@ -403,20 +403,20 @@
       });
 
       // ═══════════════════════════════════════
-      // COOKIE CONSENT (152-ФЗ gate для Яндекс.Метрики)
+      // COOKIE NOTICE (152-ФЗ информирование, Яндекс.Метрика)
       // ═══════════════════════════════════════
+      // Вариант 1 (пассивное информирование): счётчик грузится сразу для всех
+      // посетителей — иначе недосчитываем клики и цели с платной рекламы.
+      // Баннер — уведомление, показывается один раз до нажатия «Понятно».
+      // Соответствует практике 152-ФЗ (информирование + политика), без
+      // GDPR-style жёсткого opt-in.
       (function () {
-        const STORAGE_KEY = "ultramol_cookie_consent";
+        const STORAGE_KEY = "ultramol_cookie_notice";
         const banner = document.getElementById("cookie-banner");
-        if (!banner) return;
-
         const YM_COUNTER_ID = 108687631;
 
-        // Если Метрика не подключена — баннер не нужен (нет cookies, нет
-        // обработки). Покажем его автоматически, как только YM_COUNTER_ID
-        // получит значение.
         if (!YM_COUNTER_ID) {
-          banner.remove();
+          if (banner) banner.remove();
           return;
         }
 
@@ -457,55 +457,32 @@
           if (window.ym) window.ym(YM_COUNTER_ID, "reachGoal", name, params);
         }
         window.__umTrackGoal = trackGoal;
+        // Метрика теперь грузится всегда, поэтому явный «грант» из формы —
+        // no-op (оставлен для совместимости с обработчиком формы).
+        window.__umGrantConsentFromForm = function () {};
 
-        // Если пользователь не отвечал на cookie-баннер, но отправил форму
-        // с отмеченным чекбоксом согласия на обработку ПД — трактуем это как
-        // согласие и на аналитику: грузим Метрику, чтобы цель form_submit
-        // долетела. Явный «Отклонить» на баннере уважаем: не переопределяем.
-        window.__umGrantConsentFromForm = function () {
-          let current = null;
-          try { current = localStorage.getItem(STORAGE_KEY); } catch (_) {}
-          if (current === "declined") return;
-          try { localStorage.setItem(STORAGE_KEY, "accepted"); } catch (_) {}
-          hideBanner();
-          initMetrica();
-        };
+        // Счётчик — сразу, независимо от баннера.
+        initMetrica();
 
-        function hideBanner() {
-          banner.hidden = true;
-        }
+        if (!banner) return;
 
-        const stored = (function () {
+        const seen = (function () {
           try {
-            return localStorage.getItem(STORAGE_KEY);
+            return localStorage.getItem(STORAGE_KEY) === "seen";
           } catch (_) {
-            return null;
+            return false;
           }
         })();
 
-        if (stored === "accepted") {
-          initMetrica();
-        } else if (stored !== "declined") {
-          banner.hidden = false;
-        }
+        if (!seen) banner.hidden = false;
 
-        const accept = document.getElementById("cookie-accept");
-        const decline = document.getElementById("cookie-decline");
-        if (accept) {
-          accept.addEventListener("click", () => {
+        const dismiss = document.getElementById("cookie-accept");
+        if (dismiss) {
+          dismiss.addEventListener("click", () => {
             try {
-              localStorage.setItem(STORAGE_KEY, "accepted");
+              localStorage.setItem(STORAGE_KEY, "seen");
             } catch (_) {}
-            hideBanner();
-            initMetrica();
-          });
-        }
-        if (decline) {
-          decline.addEventListener("click", () => {
-            try {
-              localStorage.setItem(STORAGE_KEY, "declined");
-            } catch (_) {}
-            hideBanner();
+            banner.hidden = true;
           });
         }
       })();
