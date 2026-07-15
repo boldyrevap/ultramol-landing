@@ -333,12 +333,9 @@
           }
 
           try {
-            // Apps Script сохраняет POST ДО 302-редиректа на
-            // script.googleusercontent.com/echo. sendBeacon — самый
-            // устойчивый путь: без preflight, без CORS, без конфликта
-            // no-cors+redirect, который Chromium теперь блокирует.
-            // Fallback — fetch с redirect:"follow".
-            // Почта + Sheets — источник правды.
+            // Приём на РФ-сервере (api.ultramol.ru/lead.php): заявка пишется
+            // в CSV на российском сервере + письмо. sendBeacon — устойчивый
+            // путь без preflight/CORS-конфликтов; fallback — fetch no-cors.
             const bodyStr = JSON.stringify(payload);
             let sent = false;
             if (typeof navigator.sendBeacon === "function") {
