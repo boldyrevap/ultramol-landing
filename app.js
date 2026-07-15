@@ -224,9 +224,9 @@
 
       const attribution = captureAttribution();
 
-      // Form handler — submits to Google Apps Script Web App
-      // Paste the /exec URL from Apps Script deploy here:
-      const FORM_ENDPOINT = "https://script.google.com/macros/s/AKfycbxysyPZGhJVOL_iV9of1tgDoNLgLhCmy9NBrIQhZw6jVDa07rs6F1uNe29KDM2BRLsvWg/exec";
+      // Form handler — приём заявок на российском сервере (152-ФЗ, локализация ПД).
+      // Эндпоинт lead.php размещён на ultramol.ru (РФ-хостинг). Данные больше НЕ уходят в Google.
+      const FORM_ENDPOINT = "https://api.ultramol.ru/lead.php";
 
       const contactForm = document.getElementById("contact-form");
       if (contactForm) {
