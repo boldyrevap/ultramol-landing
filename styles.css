@@ -1824,28 +1824,6 @@
       }
 
       /* ═══════════════════════════════════════
-   SKIP LINK
-   ═══════════════════════════════════════ */
-      .skip-link {
-        position: fixed;
-        top: -100%;
-        left: 16px;
-        z-index: 200;
-        padding: 12px 24px;
-        background: var(--orange);
-        color: var(--black);
-        font-weight: 700;
-        font-size: 14px;
-        border-radius: 2px;
-        text-decoration: none;
-        transition: top 0.2s;
-      }
-
-      .skip-link:focus {
-        top: 16px;
-      }
-
-      /* ═══════════════════════════════════════
    FOCUS STYLES (a11y)
    ═══════════════════════════════════════ */
       :focus-visible {
