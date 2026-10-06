@@ -632,14 +632,19 @@
         font-size: 12px;
         margin-bottom: 8px;
       }
+      .food-case-metrics > div {
+        display: grid;
+        grid-template-rows: 1fr auto;
+      }
       .food-case-metrics dd {
         font-family: var(--mono);
         color: var(--orange);
         font-size: clamp(20px, 2vw, 26px);
         line-height: 1.5;
+        white-space: nowrap;
       }
       .food-case-metrics dd span {
-        display: block;
+        display: inline;
         color: var(--gray-300);
         font-size: 16px;
       }
@@ -689,6 +694,13 @@
         .food-case .btn-primary {
           padding: 16px 20px;
           font-size: 12px;
+        }
+      }
+
+      @media (max-width: 479px) {
+        .food-case-metrics {
+          grid-template-columns: 1fr;
+          gap: 20px;
         }
       }
 
