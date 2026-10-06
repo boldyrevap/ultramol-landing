@@ -2374,3 +2374,113 @@
       .form-consent-text a:hover {
         color: var(--orange);
       }
+
+/* Albumin case — 06.10.2026 */
+      .food-case {
+        padding: 80px 0;
+        scroll-margin-top: 80px;
+        background: var(--black-card);
+        border-block: 1px solid var(--gray-800);
+      }
+      .food-case-grid {
+        display: grid;
+        grid-template-columns: 1fr 1.1fr;
+        align-items: center;
+        gap: 48px;
+      }
+      .food-case-gallery {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        align-items: start;
+        gap: 12px;
+      }
+      .food-case-gallery figure:last-child {
+        margin-top: 48px;
+      }
+      .food-case-gallery img {
+        width: 100%;
+        height: auto;
+        border-radius: 2px;
+      }
+      .food-case-gallery figcaption {
+        padding-top: 10px;
+        font-size: 11px;
+        line-height: 1.5;
+        color: var(--gray-400);
+      }
+      .food-case-content .label {
+        margin-bottom: 16px;
+      }
+      .food-case h2 {
+        font-size: clamp(26px, 3vw, 38px);
+        line-height: 1.2;
+        letter-spacing: -0.025em;
+        margin-bottom: 20px;
+      }
+      .food-case-intro {
+        color: var(--gray-200);
+        font-size: 15px;
+      }
+      .food-case-metrics {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 24px;
+        margin: 24px 0 16px;
+        padding-block: 20px;
+        border-block: 1px solid var(--gray-800);
+      }
+      .food-case-metrics dt {
+        color: var(--gray-400);
+        font-size: 12px;
+        margin-bottom: 8px;
+      }
+      .food-case-metrics dd {
+        font-family: var(--mono);
+        color: var(--orange);
+        font-size: clamp(20px, 2vw, 26px);
+        line-height: 1.5;
+      }
+      .food-case-metrics dd span {
+        display: block;
+        color: var(--gray-300);
+        font-size: 16px;
+      }
+      .food-case-metrics small {
+        font-size: 13px;
+        white-space: nowrap;
+      }
+      .food-case-note, .food-case-footnote {
+        color: var(--gray-400);
+        font-size: 12px;
+        line-height: 1.65;
+      }
+      .food-case-note {
+        margin-bottom: 24px;
+      }
+      .food-case-footnote {
+        margin-top: 12px;
+      }
+      @media (max-width: 899px) {
+        .food-case-grid {
+          grid-template-columns: 1fr;
+          gap: 32px;
+        }
+        .food-case-content {
+          order: -1;
+        }
+        .food-case-gallery {
+          max-width: 540px;
+        }
+      }
+      @media (max-width: 599px) {
+        .food-case {
+          padding: 48px 0;
+        }
+        .food-case-metrics {
+          gap: 12px;
+        }
+        .food-case .btn-primary {
+          padding: 16px 20px;
+          font-size: 12px;
+        }
+      }
