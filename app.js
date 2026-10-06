@@ -53,25 +53,16 @@
 
       // Trust grid — static, no JS needed
 
-      // Phone field — keep "+7 " prefix
-      const phoneInput = document.getElementById('phone');
-      if (phoneInput) {
-        const ensurePrefix = () => {
-          if (!phoneInput.value.startsWith('+7')) {
-            phoneInput.value = '+7 ' + phoneInput.value.replace(/^\+?7?\s*/, '');
+      // Optional phone; an email address is also sufficient to start a conversation.
+      function contactValidationMessage(phone, email) {
+        if (!phone && !email) return "Укажите телефон или электронную почту";
+        if (phone) {
+          const digits = phone.replace(/\D/g, "");
+          if (!/^\+?[\d\s().-]+$/.test(phone) || digits.length < 10 || digits.length > 15) {
+            return "Введите полный номер телефона или оставьте только электронную почту";
           }
-        };
-        phoneInput.addEventListener('focus', () => {
-          if (!phoneInput.value) phoneInput.value = '+7 ';
-        });
-        phoneInput.addEventListener('input', ensurePrefix);
-        phoneInput.addEventListener('keydown', (e) => {
-          // Prevent deleting the "+7 " prefix
-          if ((e.key === 'Backspace' || e.key === 'Delete') &&
-              phoneInput.selectionStart <= 3 && phoneInput.selectionEnd <= 3) {
-            e.preventDefault();
-          }
-        });
+        }
+        return "";
       }
 
       // Feature accordion
@@ -232,6 +223,13 @@
       if (contactForm) {
         const submitBtn = contactForm.querySelector(".form-submit");
         const originalBtnText = submitBtn ? submitBtn.textContent : "";
+        const phoneInput = contactForm.querySelector("#phone");
+        const emailInput = contactForm.querySelector("#email");
+
+        // Clear custom errors while editing so native validation cannot trap the user.
+        [phoneInput, emailInput].forEach((input) => {
+          input.addEventListener("input", () => phoneInput.setCustomValidity(""));
+        });
 
         const setError = (msg) => {
           let err = contactForm.querySelector(".form-error");
@@ -282,8 +280,7 @@
             success.remove();
             contactForm.style.display = "block";
             contactForm.reset();
-            const ph = contactForm.querySelector("#phone");
-            if (ph) ph.value = "+7 ";
+            phoneInput.setCustomValidity("");
             resetSubmitBtn();
           });
 
@@ -295,16 +292,10 @@
           e.preventDefault();
           clearError();
 
-          const phone = contactForm.querySelector("#phone");
-          if (phone) {
-            const digits = phone.value.replace(/\D/g, "");
-            if (digits.length < 11) {
-              phone.setCustomValidity("Введите полный номер телефона");
-              phone.reportValidity();
-              return;
-            }
-            phone.setCustomValidity("");
-          }
+          phoneInput.setCustomValidity(contactValidationMessage(
+            phoneInput.value.trim(), emailInput.value.trim(),
+          ));
+          if (!contactForm.reportValidity()) return;
 
           const payload = {
             name: contactForm.name.value.trim(),
@@ -333,27 +324,18 @@
           }
 
           try {
-            // Приём на РФ-сервере (api.ultramol.ru/lead.php): заявка пишется
-            // в CSV на российском сервере + письмо. sendBeacon — устойчивый
-            // путь без preflight/CORS-конфликтов; fallback — fetch no-cors.
-            const bodyStr = JSON.stringify(payload);
-            let sent = false;
-            if (typeof navigator.sendBeacon === "function") {
-              const blob = new Blob([bodyStr], {
-                type: "text/plain;charset=utf-8",
-              });
-              sent = navigator.sendBeacon(FORM_ENDPOINT, blob);
-            }
-            if (!sent) {
-              await fetch(FORM_ENDPOINT, {
-                method: "POST",
-                mode: "no-cors",
-                redirect: "follow",
-                headers: { "Content-Type": "text/plain;charset=utf-8" },
-                body: bodyStr,
-                keepalive: true,
-              });
-            }
+            // Show success only after the server confirms acceptance.
+            const response = await fetch(FORM_ENDPOINT, {
+              method: "POST",
+              mode: "cors",
+              credentials: "omit",
+              headers: { "Content-Type": "text/plain;charset=utf-8" },
+              body: JSON.stringify(payload),
+              keepalive: true,
+            });
+            if (!response.ok) throw new Error("Lead endpoint rejected the request");
+            const result = await response.json();
+            if (result.ok !== true) throw new Error("Lead was not accepted");
             // Чекбокс согласия обязательный — если форма валидна, он
             // отмечен. Повышаем это до согласия на аналитику, чтобы Метрика
             // зафиксировала лида (иначе ym не загружен — цель теряется).
