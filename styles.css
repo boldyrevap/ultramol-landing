@@ -609,7 +609,7 @@
       .food-case-content .label {
         margin-bottom: 16px;
       }
-      .food-case h2 {
+      .food-case-content h3 {
         font-size: clamp(26px, 3vw, 38px);
         line-height: 1.2;
         letter-spacing: -0.025em;
@@ -671,6 +671,46 @@
         line-height: 1.5;
         text-decoration: underline;
         text-underline-offset: 4px;
+      }
+      .food-materials-heading {
+        margin-bottom: 44px;
+      }
+      .food-materials-heading .label {
+        margin-bottom: 16px;
+      }
+      .food-materials-heading h2 {
+        margin-bottom: 18px;
+        font-size: clamp(32px, 4vw, 50px);
+        line-height: 1.1;
+        letter-spacing: -0.035em;
+      }
+      .food-materials-heading p {
+        max-width: 650px;
+        color: var(--gray-300);
+        font-size: 16px;
+        line-height: 1.7;
+      }
+      .food-materials-more {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: baseline;
+        gap: 10px 24px;
+        margin-top: 40px;
+        padding-top: 24px;
+        border-top: 1px solid var(--gray-800);
+        font-size: 14px;
+        line-height: 1.7;
+      }
+      .food-materials-more p { color: var(--gray-300); }
+      .food-materials-more a {
+        color: var(--orange);
+        padding-block: 8px;
+        text-decoration: underline;
+        text-underline-offset: 4px;
+      }
+      .food-case a:focus-visible {
+        outline: 2px solid var(--orange);
+        outline-offset: 5px;
       }
       @media (max-width: 899px) {
         .food-case-grid {
