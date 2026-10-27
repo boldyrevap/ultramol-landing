@@ -1343,6 +1343,71 @@
         line-height: 1.6;
       }
 
+      /* Material choices link to the equipment suited to each application. */
+      .cases-materials .cases-materials-intro {
+        max-width: 700px;
+        margin-top: 22px;
+        color: var(--gray-300);
+        font-size: 16px;
+        line-height: 1.8;
+      }
+      .cases-materials .cases-grid { align-items: stretch; }
+      .cases-materials .case-card {
+        display: flex;
+        flex-direction: column;
+        min-width: 0;
+        aspect-ratio: auto;
+        overflow: visible;
+        background: var(--black-card);
+        border: 1px solid var(--gray-800);
+      }
+      .cases-materials .case-overlay {
+        position: static;
+        flex: 1;
+        justify-content: flex-start;
+        padding: 26px;
+        background: none;
+      }
+      .cases-materials .case-card h3 { margin-bottom: 18px; }
+      .case-material-list {
+        margin: 0 0 22px;
+        padding: 0;
+        list-style: none;
+      }
+      .case-material-list li { border-bottom: 1px solid var(--gray-800); }
+      .case-material-list a {
+        display: flex;
+        align-items: center;
+        min-height: 46px;
+        padding: 10px 0;
+        color: var(--gray-200);
+        font-size: 13px;
+        line-height: 1.7;
+        text-decoration: none;
+      }
+      .case-material-list a:hover { color: var(--orange); }
+      .case-equipment-link {
+        display: inline-block;
+        margin-top: auto;
+        padding: 10px 0;
+        color: var(--orange);
+        font-size: 13px;
+        line-height: 1.7;
+        text-decoration: underline;
+        text-underline-offset: 4px;
+      }
+      .cases-materials-result {
+        margin-top: 26px;
+        color: var(--gray-300);
+        font-size: 14px;
+        line-height: 1.8;
+      }
+      .cases-materials-result a { color: var(--orange); text-underline-offset: 4px; }
+      .cases-materials a:focus-visible { outline: 2px solid var(--orange); outline-offset: 5px; }
+      @media (max-width: 899px) and (min-width: 768px) {
+        .cases-materials .case-overlay { padding: 20px; }
+      }
+
       /* Ingredients tags */
       .ingredients {
         display: flex;
