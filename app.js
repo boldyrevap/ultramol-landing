@@ -377,7 +377,10 @@
           if (href === "#" || href.length < 2) return;
           e.preventDefault();
           const t = document.querySelector(href);
-          if (t) t.scrollIntoView({ behavior: "smooth", block: "start" });
+          if (t) t.scrollIntoView({
+            behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? "instant" : "smooth",
+            block: "start",
+          });
         });
       });
 
