@@ -23,3 +23,12 @@ a:focus-visible, summary:focus-visible { outline: 2px solid var(--orange-bright)
 main > section.seo-section, main > section.seo-hero { min-height: auto; }
 .skip-link { position: fixed; left: 16px; top: -100px; z-index: 9999; padding: 12px 20px; color: #020203; background: #ff9a3c; }
 .skip-link:focus { top: 16px; }
+.seo-table-wrap { max-width: 100%; overflow-x: auto; margin: 24px 0; }
+.seo-table-wrap:focus-visible { outline: 2px solid var(--orange-bright); outline-offset: 4px; }
+.seo-reading table { width: 100%; border-collapse: collapse; text-align: left; font-size: 16px; line-height: 1.65; }
+.seo-reading caption { text-align: left; margin-bottom: 16px; color: var(--gray-200); }
+.seo-reading th, .seo-reading td { padding: 16px; border: 1px solid var(--gray-800); vertical-align: top; overflow-wrap: anywhere; color: var(--gray-200); }
+.seo-reading th { background: var(--black-elevated); color: var(--white); }
+.seo-reading th:first-child, .seo-reading td:first-child { width: 32%; min-width: 100px; }
+.seo-reading .seo-source { font-size: 14px; }
+@media (max-width: 600px) { .seo-reading th, .seo-reading td { padding: 10px; font-size: 14px; } }
