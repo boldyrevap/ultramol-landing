@@ -23,3 +23,5 @@ main>section.library-section{padding:76px 0;min-height:0;border-bottom:1px solid
 @media(prefers-reduced-motion:reduce){.library-feature-image img,.library-card,.library-card img,.library-link b{transition:none}.library-card:hover,.library-feature:hover img,.library-card:hover img,.library-feature:hover .library-link b,.library-guide:hover .library-link b{transform:none}}
 
 main>section.library-hero,main>section.library-section{min-height:0;display:block}
+
+.library-project-more{margin:24px 0 0;font-size:15px;line-height:1.7;color:var(--orange-bright)}.library-project-more a:hover{text-decoration:underline;text-underline-offset:5px}
