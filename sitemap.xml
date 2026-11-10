@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://pomol.ultramol.ru/</loc>
-    <lastmod>2026-04-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>1.0</priority>
-  </url>
+  <url><loc>https://pomol.ultramol.ru/</loc><lastmod>2026-11-10</lastmod></url>
+  <url><loc>https://pomol.ultramol.ru/primenenie/saharnaya-pudra/</loc><lastmod>2026-11-10</lastmod></url>
+  <url><loc>https://pomol.ultramol.ru/primenenie/specii/</loc><lastmod>2026-11-10</lastmod></url>
+  <url><loc>https://pomol.ultramol.ru/primenenie/sol/</loc><lastmod>2026-11-10</lastmod></url>
+  <url><loc>https://pomol.ultramol.ru/podbor/</loc><lastmod>2026-11-10</lastmod></url>
+  <url><loc>https://pomol.ultramol.ru/ispytaniya/</loc><lastmod>2026-11-10</lastmod></url>
 </urlset>

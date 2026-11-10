@@ -371,7 +371,7 @@
       });
 
       // Smooth scroll
-      document.querySelectorAll('a[href^="#"]').forEach((a) => {
+      document.querySelectorAll('a[href^="#"]:not(.skip-link)').forEach((a) => {
         a.addEventListener("click", (e) => {
           const href = a.getAttribute("href");
           if (href === "#" || href.length < 2) return;

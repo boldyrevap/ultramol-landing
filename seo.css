@@ -1,0 +1,25 @@
+/* Shared, readable detail pages in the existing Ultramol palette. */
+.seo-hero { padding: 130px 0 64px; background: var(--black-rich); border-bottom: 1px solid var(--gray-800); }
+.seo-hero h1 { max-width: 1000px; font-size: clamp(32px, 5vw, 64px); line-height: 1.08; letter-spacing: -.035em; margin: 24px 0; }
+.seo-breadcrumb { color: var(--gray-400); font-size: 14px; margin-bottom: 40px; display: flex; gap: 12px; flex-wrap: wrap; }
+.seo-lead { max-width: 800px; font-size: clamp(18px, 2vw, 22px); line-height: 1.6; color: var(--gray-200); margin-bottom: 28px; }
+.seo-section { padding: 56px 0; border-bottom: 1px solid var(--gray-800); scroll-margin-top: 96px; }
+.seo-reading { max-width: 960px; }
+.seo-reading h2 { font-size: clamp(26px, 3.2vw, 38px); line-height: 1.2; letter-spacing: -.025em; margin-bottom: 24px; }
+.seo-reading p, .seo-reading li { font-size: 17px; line-height: 1.75; color: var(--gray-200); }
+.seo-reading p + p { margin-top: 16px; }
+.seo-reading ul, .seo-reading ol { padding-left: 24px; }
+.seo-reading li { padding-left: 8px; margin-bottom: 12px; }
+.seo-reading a, .seo-breadcrumb a { color: var(--orange-bright); text-underline-offset: 4px; }
+.seo-reading a:hover, .seo-breadcrumb a:hover { text-decoration: underline; }
+.seo-reading details { padding: 20px 0; border-bottom: 1px solid var(--gray-800); }
+.seo-reading summary { font-size: 18px; font-weight: 600; cursor: pointer; line-height: 1.5; }
+.seo-reading details p { margin-top: 14px; }
+.seo-template { white-space: pre-wrap; overflow-wrap: anywhere; padding: 24px; background: var(--black-elevated); color: var(--white); font: inherit; line-height: 2; }
+#economics, #comparison, #fears { scroll-margin-top: 100px; }
+a:focus-visible, summary:focus-visible { outline: 2px solid var(--orange-bright); outline-offset: 5px; }
+@media (max-width: 600px) { .seo-hero { padding: 110px 0 40px; } .seo-section { padding: 36px 0; } .seo-template { padding: 16px; } .seo-breadcrumb { margin-bottom: 24px; } }
+
+main > section.seo-section, main > section.seo-hero { min-height: auto; }
+.skip-link { position: fixed; left: 16px; top: -100px; z-index: 9999; padding: 12px 20px; color: #020203; background: #ff9a3c; }
+.skip-link:focus { top: 16px; }
