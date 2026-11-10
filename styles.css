@@ -326,7 +326,7 @@
         position: absolute;
         inset: 0;
         overflow: hidden;
-        background: url("assets/images/hero.webp") center/cover no-repeat
+        background: url("assets/images/hero-clean-20261110.webp") center/cover no-repeat
           var(--black);
       }
 
