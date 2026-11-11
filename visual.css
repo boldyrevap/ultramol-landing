@@ -62,6 +62,12 @@
 .diagram-dot{fill:var(--orange-bright);stroke:var(--black-card);stroke-width:3}
 .diagram-note{font-size:15px;line-height:1.7;color:var(--white)}
 .diagram-note span{font-size:12px;color:var(--gray-400)}
+.diagram-explainer{margin-top:20px;padding-top:20px;border-top:1px solid var(--gray-700);font-size:14px;line-height:1.65;color:var(--gray-300)}
+.diagram-explainer p{margin:0 0 12px}.diagram-explainer strong{color:var(--white);font-weight:600}
+.diagram-explainer ul{margin:0 0 16px;padding-left:20px}.diagram-explainer li{margin:6px 0}
+.diagram-explainer .diagram-example{padding:14px;background:var(--black);border:1px solid var(--gray-700)}
+.diagram-explainer .diagram-footnote{margin:0;font-size:12px;line-height:1.6}
+
 .heat-symbol{position:relative;display:grid;place-items:center;align-self:center;width:230px;height:230px;margin:24px 0;font:76px/1 var(--mono);color:var(--orange-bright)}
 .heat-ring{position:absolute;inset:5px;border:1px solid var(--gray-700);border-radius:50%;box-shadow:0 0 0 22px rgba(138,138,138,.14),0 0 0 43px rgba(138,138,138,.08)}
 .heat-flow{display:flex;align-items:center;justify-content:space-between;gap:10px;border-top:1px solid var(--gray-700);padding-top:28px;margin-bottom:28px}
